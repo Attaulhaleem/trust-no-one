@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cbram80xjim3b"]
+
+[ext_resource type="PackedScene" uid="uid://crtb6rmnexlj2" path="res://stickman.tscn" id="1_80nbo"]
+
+[node name="Game" type="Node2D" unique_id=1704946345]
+
+[node name="BackgroundCanvasLayer" type="CanvasLayer" parent="." unique_id=1447895418]
+layer = -1
+
+[node name="BackgroundColorRect" type="ColorRect" parent="BackgroundCanvasLayer" unique_id=2068206168]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stickman" parent="." unique_id=987114327 instance=ExtResource("1_80nbo")]
+position = Vector2(464, 388)
+
+[node name="Stickman2" parent="." unique_id=1711268591 instance=ExtResource("1_80nbo")]
+position = Vector2(192.00003, 232)
+
+[node name="Stickman3" parent="." unique_id=999495364 instance=ExtResource("1_80nbo")]
+position = Vector2(836, 280)
