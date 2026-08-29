@@ -1,63 +1,103 @@
 [gd_scene format=3 uid="uid://crtb6rmnexlj2"]
 
-[ext_resource type="Texture2D" uid="uid://d1mhwyskn38j2" path="res://stickman/body/idle.svg" id="2_6tcpw"]
-[ext_resource type="Texture2D" uid="uid://b8rgsvrabb6od" path="res://stickman/body/walk_01.svg" id="3_aecf4"]
+[ext_resource type="Texture2D" uid="uid://bylefcbudrcrf" path="res://stickman/body/idle.svg" id="2_6tcpw"]
+[ext_resource type="Texture2D" uid="uid://dwvobby4m24ue" path="res://stickman/body/horizontal/walk_horizontal_01.svg" id="3_sldoi"]
 [ext_resource type="Script" uid="uid://fxqvx7kr7vqh" path="res://stickman/stickman.gd" id="3_stickman"]
-[ext_resource type="Texture2D" uid="uid://blxkgaj8exivk" path="res://stickman/body/walk_02.svg" id="4_8xr5o"]
-[ext_resource type="Texture2D" uid="uid://dkse7dw6k0hpa" path="res://stickman/body/walk_03.svg" id="5_dnb3y"]
-[ext_resource type="Texture2D" uid="uid://dqq34tu2wqpup" path="res://stickman/body/walk_04.svg" id="6_3y8gl"]
-[ext_resource type="Texture2D" uid="uid://gvq5o3xjdc7k" path="res://stickman/body/walk_05.svg" id="7_nl7f7"]
-[ext_resource type="Texture2D" uid="uid://df4gesxddg3eg" path="res://stickman/body/walk_06.svg" id="8_730a8"]
-[ext_resource type="Texture2D" uid="uid://b61bxaj1f7shn" path="res://stickman/body/walk_07.svg" id="9_oebj1"]
-[ext_resource type="Texture2D" uid="uid://vg4t6h51hqcs" path="res://stickman/body/walk_08.svg" id="10_fjbpa"]
+[ext_resource type="Texture2D" uid="uid://bq26pfmhweoyx" path="res://stickman/body/horizontal/walk_horizontal_02.svg" id="4_wrhk3"]
+[ext_resource type="Texture2D" uid="uid://dni0d1qwxv3kb" path="res://stickman/body/horizontal/walk_horizontal_03.svg" id="5_43sgt"]
+[ext_resource type="Texture2D" uid="uid://k5pjomkgfnya" path="res://stickman/body/horizontal/walk_horizontal_04.svg" id="6_ua3et"]
+[ext_resource type="Texture2D" uid="uid://544ytsc4k03l" path="res://stickman/body/horizontal/walk_horizontal_05.svg" id="7_tpg7n"]
+[ext_resource type="Texture2D" uid="uid://cfagelqnp5dij" path="res://stickman/body/horizontal/walk_horizontal_06.svg" id="8_1xfu3"]
+[ext_resource type="Texture2D" uid="uid://fda7uakmjug4" path="res://stickman/body/horizontal/walk_horizontal_07.svg" id="9_df13s"]
+[ext_resource type="Texture2D" uid="uid://ors1xfx3wpen" path="res://stickman/body/horizontal/walk_horizontal_08.svg" id="10_d6aha"]
+[ext_resource type="Texture2D" uid="uid://dgk55qtcftl3w" path="res://stickman/body/vertical/walk_vertical_01.svg" id="11_0qydf"]
 [ext_resource type="Texture2D" uid="uid://bgfeqjicb0o5y" path="res://stickman/accessories/bowtie.svg" id="11_aecf4"]
 [ext_resource type="Texture2D" uid="uid://c335aq2jnu5s4" path="res://stickman/accessories/tie.svg" id="12_730a8"]
+[ext_resource type="Texture2D" uid="uid://tn540yapo51j" path="res://stickman/body/vertical/walk_vertical_02.svg" id="12_mnsci"]
 [ext_resource type="Texture2D" uid="uid://cxb8mumgu1e72" path="res://stickman/accessories/glasses.svg" id="13_oebj1"]
+[ext_resource type="Texture2D" uid="uid://bia4i3nli8713" path="res://stickman/body/vertical/walk_vertical_03.svg" id="13_wsvlm"]
 [ext_resource type="Texture2D" uid="uid://bslgfj6jpyfqf" path="res://stickman/accessories/hat_cap.svg" id="14_fjbpa"]
+[ext_resource type="Texture2D" uid="uid://bgdcsvyf2ygu7" path="res://stickman/body/vertical/walk_vertical_04.svg" id="14_su30g"]
 [ext_resource type="Texture2D" uid="uid://blypxddymwveo" path="res://stickman/accessories/hat_top.svg" id="15_aeolx"]
+[ext_resource type="Texture2D" uid="uid://bl7sjjh4kuiy" path="res://stickman/body/vertical/walk_vertical_05.svg" id="15_rl4wl"]
 [ext_resource type="Texture2D" uid="uid://bwqnhgaf8u5t3" path="res://stickman/accessories/mustache.svg" id="16_4ge5y"]
+[ext_resource type="Texture2D" uid="uid://c0wokkdknqtat" path="res://stickman/body/vertical/walk_vertical_06.svg" id="16_ug43w"]
+[ext_resource type="Texture2D" uid="uid://cb6ob1cpjeue5" path="res://stickman/body/vertical/walk_vertical_07.svg" id="17_bvwkw"]
+[ext_resource type="Texture2D" uid="uid://b2y2fqb6rm5a5" path="res://stickman/body/vertical/walk_vertical_08.svg" id="18_uwosb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aeolx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7t5g"]
 atlas = ExtResource("2_6tcpw")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ge5y"]
-atlas = ExtResource("3_aecf4")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7lp4"]
+atlas = ExtResource("3_sldoi")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a0sne"]
-atlas = ExtResource("4_8xr5o")
+[sub_resource type="AtlasTexture" id="AtlasTexture_crwlf"]
+atlas = ExtResource("4_wrhk3")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhw3b"]
-atlas = ExtResource("5_dnb3y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptmqr"]
+atlas = ExtResource("5_43sgt")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cvoy2"]
-atlas = ExtResource("6_3y8gl")
+[sub_resource type="AtlasTexture" id="AtlasTexture_isuf1"]
+atlas = ExtResource("6_ua3et")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g1r78"]
-atlas = ExtResource("7_nl7f7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7711q"]
+atlas = ExtResource("7_tpg7n")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_81roc"]
-atlas = ExtResource("8_730a8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyq6v"]
+atlas = ExtResource("8_1xfu3")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_epokv"]
-atlas = ExtResource("9_oebj1")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxjkb"]
+atlas = ExtResource("9_df13s")
 region = Rect2(0, 0, 200, 320)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vqkol"]
-atlas = ExtResource("10_fjbpa")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yygjv"]
+atlas = ExtResource("10_d6aha")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wce2d"]
+atlas = ExtResource("11_0qydf")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxgaw"]
+atlas = ExtResource("12_mnsci")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q0pgk"]
+atlas = ExtResource("13_wsvlm")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l1sv"]
+atlas = ExtResource("14_su30g")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m3rj"]
+atlas = ExtResource("15_rl4wl")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbph8"]
+atlas = ExtResource("16_ug43w")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vykw"]
+atlas = ExtResource("17_bvwkw")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pxxh"]
+atlas = ExtResource("18_uwosb")
 region = Rect2(0, 0, 200, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sej1l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aeolx")
+"texture": SubResource("AtlasTexture_n7t5g")
 }],
 "loop": 0,
 "name": &"idle",
@@ -65,75 +105,116 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ge5y")
+"texture": SubResource("AtlasTexture_f7lp4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a0sne")
+"texture": SubResource("AtlasTexture_crwlf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xhw3b")
+"texture": SubResource("AtlasTexture_ptmqr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cvoy2")
+"texture": SubResource("AtlasTexture_isuf1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g1r78")
+"texture": SubResource("AtlasTexture_7711q")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_81roc")
+"texture": SubResource("AtlasTexture_oyq6v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_epokv")
+"texture": SubResource("AtlasTexture_pxjkb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vqkol")
+"texture": SubResource("AtlasTexture_yygjv")
 }],
 "loop": 1,
-"name": &"walk",
+"name": &"walk_horizontal",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wce2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxgaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q0pgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l1sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m3rj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbph8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vykw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pxxh")
+}],
+"loop": 1,
+"name": &"walk_vertical",
 "speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sej1l"]
-radius = 9.999999
-height = 239.99997
+radius = 14.0
+height = 136.0
 
-[node name="Stickman" type="CharacterBody2D" unique_id=987114327 node_paths=PackedStringArray("animated_sprite")]
+[node name="Stickman" type="CharacterBody2D" unique_id=987114327 node_paths=PackedStringArray("animated_sprite", "bowtie_sprite", "tie_sprite", "glasses_sprite", "hat_cap_sprite", "hat_top_sprite", "mustache_sprite")]
+y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
 script = ExtResource("3_stickman")
 animated_sprite = NodePath("AnimatedSprite2D")
+bowtie_sprite = NodePath("BowtieSprite2D")
+tie_sprite = NodePath("TieSprite2D")
+glasses_sprite = NodePath("GlassesSprite2D")
+hat_cap_sprite = NodePath("HatCapSprite2D")
+hat_top_sprite = NodePath("HatTopSprite2D")
+mustache_sprite = NodePath("MustacheSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1266758904]
+modulate = Color(0, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_sej1l")
-animation = &"walk"
+animation = &"walk_vertical"
 autoplay = "idle"
-frame_progress = 0.68795496
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467081984]
-visible = false
-position = Vector2(0, -3.8146973e-06)
+position = Vector2(0, -54)
 shape = SubResource("CapsuleShape2D_sej1l")
 
 [node name="BowtieSprite2D" type="Sprite2D" parent="." unique_id=1259095385]
 visible = false
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("11_aecf4")
 
 [node name="TieSprite2D" type="Sprite2D" parent="." unique_id=465287191]
 visible = false
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("12_730a8")
 
 [node name="GlassesSprite2D" type="Sprite2D" parent="." unique_id=1764639747]
 visible = false
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("13_oebj1")
 
 [node name="HatCapSprite2D" type="Sprite2D" parent="." unique_id=1106235137]
 visible = false
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("14_fjbpa")
 
 [node name="HatTopSprite2D" type="Sprite2D" parent="." unique_id=1763765795]
 visible = false
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("15_aeolx")
 
 [node name="MustacheSprite2D" type="Sprite2D" parent="." unique_id=1682749148]
 visible = false
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("16_4ge5y")

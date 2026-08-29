@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bylefcbudrcrf"
-path="res://.godot/imported/idle.svg-a25de2bb82c7d4e15a96d9d3c865e5fd.ctex"
+uid="uid://cfagelqnp5dij"
+path="res://.godot/imported/walk_horizontal_06.svg-ca4500fefd41d79a6e10a324fcf4d060.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stickman/body/idle.svg"
-dest_files=["res://.godot/imported/idle.svg-a25de2bb82c7d4e15a96d9d3c865e5fd.ctex"]
+source_file="res://stickman/body/horizontal/walk_horizontal_06.svg"
+dest_files=["res://.godot/imported/walk_horizontal_06.svg-ca4500fefd41d79a6e10a324fcf4d060.ctex"]
 
 [params]
 

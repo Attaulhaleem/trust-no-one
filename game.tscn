@@ -16,9 +16,15 @@ grow_vertical = 2
 
 [node name="Stickman" parent="." unique_id=987114327 instance=ExtResource("1_80nbo")]
 position = Vector2(464, 388)
+hat_top = true
+is_player = true
 
 [node name="Stickman2" parent="." unique_id=1711268591 instance=ExtResource("1_80nbo")]
 position = Vector2(192.00003, 232)
+glasses = true
+mustache = true
 
 [node name="Stickman3" parent="." unique_id=999495364 instance=ExtResource("1_80nbo")]
 position = Vector2(836, 280)
+tie = true
+hat_cap = true
