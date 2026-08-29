@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="HeadAccessory" format=3 uid="uid://d0nrg0pb3mexa"]
-
-[ext_resource type="Script" uid="uid://vub72vght4em" path="res://accessories/head_accessories/head_accessory.gd" id="1_2l0u2"]
-[ext_resource type="Texture2D" uid="uid://cp7ybpv5mmb3w" path="res://stickman/accessories/headwear/crown.svg" id="2_m63wb"]
-
-[resource]
-script = ExtResource("1_2l0u2")
-texture = ExtResource("2_m63wb")
-metadata/_custom_type_script = "uid://vub72vght4em"

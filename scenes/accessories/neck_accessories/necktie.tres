@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NeckAccessory" format=3 uid="uid://cjfrw2mf18l4p"]
+
+[ext_resource type="Script" uid="uid://bykvgm0phi8w0" path="res://scenes/accessories/neck_accessories/neck_accessory.gd" id="1_gmmt6"]
+[ext_resource type="Texture2D" uid="uid://c74bg3jx8j6y7" path="res://assets/accessories/neck_accessories/necktie.svg" id="2_aprih"]
+
+[resource]
+script = ExtResource("1_gmmt6")
+texture = ExtResource("2_aprih")
+metadata/_custom_type_script = "uid://bykvgm0phi8w0"

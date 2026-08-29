@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EyesAccessory" format=3 uid="uid://c1144fimfn82n"]
-
-[ext_resource type="Script" uid="uid://dskbsxwc7daxp" path="res://accessories/eyes_accessories/eyes_accessory.gd" id="1_utnho"]
-[ext_resource type="Texture2D" uid="uid://cmj3h2autnvtt" path="res://stickman/accessories/eyewear/sunglasses.svg" id="2_f4cpr"]
-
-[resource]
-script = ExtResource("1_utnho")
-texture = ExtResource("2_f4cpr")
-metadata/_custom_type_script = "uid://dskbsxwc7daxp"

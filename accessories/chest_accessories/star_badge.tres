@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ChestAccessory" format=3 uid="uid://dpjp131rn5wgk"]
-
-[ext_resource type="Script" uid="uid://bpcyjljiqblp3" path="res://accessories/chest_accessories/chest_accessory.gd" id="1_g2wh6"]
-[ext_resource type="Texture2D" uid="uid://bhoq16rntk0x3" path="res://stickman/accessories/chest_badge/star_badge.svg" id="2_2br2x"]
-
-[resource]
-script = ExtResource("1_g2wh6")
-texture = ExtResource("2_2br2x")
-metadata/_custom_type_script = "uid://bpcyjljiqblp3"

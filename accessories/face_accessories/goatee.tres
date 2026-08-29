@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="FaceAccessory" format=3 uid="uid://bakikrj8gi8jg"]
-
-[ext_resource type="Script" uid="uid://mhe3wvgbxprs" path="res://accessories/face_accessories/face_accessory.gd" id="1_l6mq5"]
-[ext_resource type="Texture2D" uid="uid://bq63xn0nvvi02" path="res://stickman/accessories/facial_hair/goatee.svg" id="2_ecrnr"]
-
-[resource]
-script = ExtResource("1_l6mq5")
-texture = ExtResource("2_ecrnr")
-metadata/_custom_type_script = "uid://mhe3wvgbxprs"

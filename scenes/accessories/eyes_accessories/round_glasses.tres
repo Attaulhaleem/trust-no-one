@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EyesAccessory" format=3 uid="uid://bmavh3hg5tvju"]
+
+[ext_resource type="Script" uid="uid://dskbsxwc7daxp" path="res://scenes/accessories/eyes_accessories/eyes_accessory.gd" id="1_53lno"]
+[ext_resource type="Texture2D" uid="uid://de4u45d4royld" path="res://assets/accessories/eyes_accessories/round_glasses.svg" id="2_1ofxd"]
+
+[resource]
+script = ExtResource("1_53lno")
+texture = ExtResource("2_1ofxd")
+metadata/_custom_type_script = "uid://dskbsxwc7daxp"

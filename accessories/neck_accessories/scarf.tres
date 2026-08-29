@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="NeckAccessory" format=3 uid="uid://be4plq7cb2w8"]
-
-[ext_resource type="Script" uid="uid://bykvgm0phi8w0" path="res://accessories/neck_accessories/neck_accessory.gd" id="1_56nht"]
-[ext_resource type="Texture2D" uid="uid://bxkkv6j01ldno" path="res://stickman/accessories/neckwear/scarf.svg" id="2_68p7u"]
-
-[resource]
-script = ExtResource("1_56nht")
-texture = ExtResource("2_68p7u")
-metadata/_custom_type_script = "uid://bykvgm0phi8w0"

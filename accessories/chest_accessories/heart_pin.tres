@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ChestAccessory" format=3 uid="uid://kpd6srpgmfkt"]
-
-[ext_resource type="Script" uid="uid://bpcyjljiqblp3" path="res://accessories/chest_accessories/chest_accessory.gd" id="1_7vewk"]
-[ext_resource type="Texture2D" uid="uid://cpls3fayorory" path="res://stickman/accessories/chest_badge/heart_pin.svg" id="2_5jhps"]
-
-[resource]
-script = ExtResource("1_7vewk")
-texture = ExtResource("2_5jhps")
-metadata/_custom_type_script = "uid://bpcyjljiqblp3"

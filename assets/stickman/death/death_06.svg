@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 320" style="color:#ffffff;">
+  <g opacity="0.808" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(82.56,61.48) rotate(13.89)"><circle cx="0" cy="0" r="20"/></g>
+  <g transform="translate(107.18,197.74) rotate(-19.44)"><line x1="0" y1="-42.5" x2="0" y2="42.5"/></g>
+  <g transform="translate(28.35,128.77) rotate(-105.56)"><line x1="0" y1="0" x2="0" y2="88"/></g>
+  <g transform="translate(171.65,128.77) rotate(105.56)"><line x1="0" y1="0" x2="0" y2="88"/></g>
+  <g transform="translate(48.82,252.45) rotate(-77.78)"><line x1="0" y1="0" x2="0" y2="110"/></g>
+  <g transform="translate(151.18,252.45) rotate(77.78)"><line x1="0" y1="0" x2="0" y2="110"/></g>
+  </g>
+</svg>
