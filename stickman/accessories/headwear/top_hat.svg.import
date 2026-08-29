@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bslgfj6jpyfqf"
-path="res://.godot/imported/hat_cap.svg-9e1054c5e426b92d96ddf46fa87021cf.ctex"
+uid="uid://d3fsjbxi7jiyh"
+path="res://.godot/imported/top_hat.svg-764f869f94b9aeadd872ea0a87391bf5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stickman/accessories/hat_cap.svg"
-dest_files=["res://.godot/imported/hat_cap.svg-9e1054c5e426b92d96ddf46fa87021cf.ctex"]
+source_file="res://stickman/accessories/headwear/top_hat.svg"
+dest_files=["res://.godot/imported/top_hat.svg-764f869f94b9aeadd872ea0a87391bf5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwqnhgaf8u5t3"
-path="res://.godot/imported/mustache.svg-6097bf6786064098c699dfd9ec9cbfea.ctex"
+uid="uid://bo36wc5m22la5"
+path="res://.godot/imported/face_fill.svg-0539ccc08ffeee0439f4c1548ff473d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stickman/accessories/mustache.svg"
-dest_files=["res://.godot/imported/mustache.svg-6097bf6786064098c699dfd9ec9cbfea.ctex"]
+source_file="res://stickman/body/face_fill.svg"
+dest_files=["res://.godot/imported/face_fill.svg-0539ccc08ffeee0439f4c1548ff473d4.ctex"]
 
 [params]
 

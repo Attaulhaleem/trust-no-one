@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c335aq2jnu5s4"
-path="res://.godot/imported/tie.svg-65bab20ee61f25c04d7bb037a94b9882.ctex"
+uid="uid://6204q0nm6ppo"
+path="res://.godot/imported/bow_tie.svg-c298e7342fb56a01a2874f6d593775a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stickman/accessories/tie.svg"
-dest_files=["res://.godot/imported/tie.svg-65bab20ee61f25c04d7bb037a94b9882.ctex"]
+source_file="res://stickman/accessories/neckwear/bow_tie.svg"
+dest_files=["res://.godot/imported/bow_tie.svg-c298e7342fb56a01a2874f6d593775a2.ctex"]
 
 [params]
 

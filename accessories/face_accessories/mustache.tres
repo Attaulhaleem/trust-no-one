@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FaceAccessory" format=3 uid="uid://bbdl7aybnjea2"]
+
+[ext_resource type="Script" uid="uid://mhe3wvgbxprs" path="res://accessories/face_accessories/face_accessory.gd" id="1_jovbb"]
+[ext_resource type="Texture2D" uid="uid://dstbpgx3tqvp2" path="res://stickman/accessories/facial_hair/mustache.svg" id="2_64s3g"]
+
+[resource]
+script = ExtResource("1_jovbb")
+texture = ExtResource("2_64s3g")
+metadata/_custom_type_script = "uid://mhe3wvgbxprs"

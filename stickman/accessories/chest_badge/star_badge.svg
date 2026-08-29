@@ -2,12 +2,7 @@
   <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
   
 <g fill="currentColor">
-  <path d="M 80 51
-           a 20 16 0 0 1 40 0
-           z"/>
-  <path d="M 116 53
-           q 26 2 30 12
-           q -18 4 -32 -4 z"/>
+  <polygon points="100.0,118.5 103.5,127.6 113.3,128.2 105.7,134.4 108.2,143.8 100.0,138.5 91.8,143.8 94.3,134.4 86.7,128.2 96.5,127.6"/>
 </g>
 
   </g>

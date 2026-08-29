@@ -12,63 +12,52 @@ const MOVE_DOWN_ACTION := &"move_down"
 @export_group("Nodes")
 @export var animated_sprite: AnimatedSprite2D
 @export var bowtie_sprite: Sprite2D
-@export var tie_sprite: Sprite2D
-@export var glasses_sprite: Sprite2D
-@export var hat_cap_sprite: Sprite2D
-@export var hat_top_sprite: Sprite2D
-@export var mustache_sprite: Sprite2D
+@export var head_accessory_sprite: Sprite2D
+@export var eyes_accessory_sprite: Sprite2D
+@export var face_accessory_sprite: Sprite2D
+@export var neck_accessory_sprite: Sprite2D
+@export var chest_accessory_sprite: Sprite2D
 
 @export_group("Accessories")
-@export var bowtie: bool = false:
+@export var head_accessory: HeadAccessory = null:
 	set(value):
-		bowtie = value
-		_apply_accessory_visibility()
-@export var tie: bool = false:
+		head_accessory = value
+		_update_accessory_sprite(head_accessory_sprite, head_accessory)
+@export var eyes_accessory: EyesAccessory = null:
 	set(value):
-		tie = value
-		_apply_accessory_visibility()
-@export var glasses: bool = false:
+		eyes_accessory = value
+		_update_accessory_sprite(eyes_accessory_sprite, eyes_accessory)
+@export var face_accessory: FaceAccessory = null:
 	set(value):
-		glasses = value
-		_apply_accessory_visibility()
-@export var hat_cap: bool = false:
+		face_accessory = value
+		_update_accessory_sprite(face_accessory_sprite, face_accessory)
+@export var neck_accessory: NeckAccessory = null:
 	set(value):
-		hat_cap = value
-		_apply_accessory_visibility()
-@export var hat_top: bool = false:
+		neck_accessory = value
+		_update_accessory_sprite(neck_accessory_sprite, neck_accessory)
+@export var chest_accessory: ChestAccessory = null:
 	set(value):
-		hat_top = value
-		_apply_accessory_visibility()
-@export var mustache: bool = false:
-	set(value):
-		mustache = value
-		_apply_accessory_visibility()
+		chest_accessory = value
+		_update_accessory_sprite(chest_accessory_sprite, chest_accessory)
 
 @export_group("Settings")
 @export var move_speed: float = 200.0
-@export var is_player: bool = false
+@export var is_player: bool = false:
+	set(value):
+		is_player = value
+		animated_sprite.modulate = Color.RED if is_player else Color.BLACK
+
+@onready var head_accessory_color := _set_random_sprite_color(head_accessory_sprite)
+@onready var eyes_accessory_color := _set_random_sprite_color(eyes_accessory_sprite)
+@onready var face_accessory_color := _set_random_sprite_color(face_accessory_sprite)
+@onready var neck_accessory_color := _set_random_sprite_color(neck_accessory_sprite)
+@onready var chest_accessory_color := _set_random_sprite_color(chest_accessory_sprite)
+
+var is_special: bool = false # For assassin status
 
 
 func _ready() -> void:
 	motion_mode = MOTION_MODE_FLOATING
-	_apply_accessory_visibility()
-
-
-func _apply_accessory_visibility() -> void:
-	if not is_node_ready():
-		return
-	if bowtie_sprite:
-		bowtie_sprite.visible = bowtie
-	if tie_sprite:
-		tie_sprite.visible = tie
-	if glasses_sprite:
-		glasses_sprite.visible = glasses
-	if hat_cap_sprite:
-		hat_cap_sprite.visible = hat_cap
-	if hat_top_sprite:
-		hat_top_sprite.visible = hat_top
-	if mustache_sprite:
-		mustache_sprite.visible = mustache
 
 
 func _physics_process(_delta: float) -> void:
@@ -82,12 +71,39 @@ func _physics_process(_delta: float) -> void:
 	_update_walk_animation()
 
 
+func _set_random_sprite_color(sprite: Sprite2D) -> Color:
+	var color := Color.BLACK
+
+	if sprite:
+		color = Color.from_hsv(randf(), 1.0, 1.0)
+		sprite.modulate = Color.from_hsv(randf(), 1.0, 1.0)
+
+	return color
+
+
+func _update_accessory_sprite(sprite: Sprite2D, accessory: Accessory) -> void:
+	if accessory and sprite:
+		sprite.texture = accessory.texture
+		sprite.modulate = accessory.color
+
+
+func _update_accessory_z_index(sprite: Sprite2D, accessory: Accessory) -> void:
+	if accessory and sprite:
+		sprite.z_index = accessory.back_z_index if velocity.y < 0.0 else 0
+
+
 func _update_walk_animation() -> void:
 	if animated_sprite == null:
 		return
 
 	if velocity.x != 0.0:
 		animated_sprite.flip_h = velocity.x > 0.0
+
+	# _update_accessory_z_index(head_accessory_sprite, head_accessory)
+	# _update_accessory_z_index(eyes_accessory_sprite, eyes_accessory)
+	# _update_accessory_z_index(face_accessory_sprite, face_accessory)
+	# _update_accessory_z_index(neck_accessory_sprite, neck_accessory)
+	# _update_accessory_z_index(chest_accessory_sprite, chest_accessory)
 
 	if velocity == Vector2.ZERO:
 		animated_sprite.play(IDLE_ANIMATION)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blypxddymwveo"
-path="res://.godot/imported/hat_top.svg-489adaf0083da7fef31df59ce1806a6b.ctex"
+uid="uid://bxkkv6j01ldno"
+path="res://.godot/imported/scarf.svg-c00c5ae27bc349fe87d347131c605b3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stickman/accessories/hat_top.svg"
-dest_files=["res://.godot/imported/hat_top.svg-489adaf0083da7fef31df59ce1806a6b.ctex"]
+source_file="res://stickman/accessories/neckwear/scarf.svg"
+dest_files=["res://.godot/imported/scarf.svg-c00c5ae27bc349fe87d347131c605b3a.ctex"]
 
 [params]
 

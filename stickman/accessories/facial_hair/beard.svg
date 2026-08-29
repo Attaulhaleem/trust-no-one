@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 320" style="color:#ffffff;">
+  <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+  
+<g fill="currentColor">
+  <path d="M 85 78
+           Q 78 99 100 108
+           Q 122 99 115 78
+           A 20 20 0 0 0 85 78
+           Z"/>
+</g>
+
+  </g>
+</svg>

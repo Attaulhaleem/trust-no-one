@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NeckAccessory" format=3 uid="uid://c788q7r3fns3h"]
+
+[ext_resource type="Script" uid="uid://bykvgm0phi8w0" path="res://accessories/neck_accessories/neck_accessory.gd" id="1_lxnjx"]
+[ext_resource type="Texture2D" uid="uid://6204q0nm6ppo" path="res://stickman/accessories/neckwear/bow_tie.svg" id="2_g4isg"]
+
+[resource]
+script = ExtResource("1_lxnjx")
+texture = ExtResource("2_g4isg")
+metadata/_custom_type_script = "uid://bykvgm0phi8w0"

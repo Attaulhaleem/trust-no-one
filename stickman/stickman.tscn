@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://crtb6rmnexlj2"]
 
 [ext_resource type="Texture2D" uid="uid://bylefcbudrcrf" path="res://stickman/body/idle.svg" id="2_6tcpw"]
+[ext_resource type="Texture2D" uid="uid://bo36wc5m22la5" path="res://stickman/body/face_fill.svg" id="2_tpg7n"]
 [ext_resource type="Texture2D" uid="uid://dwvobby4m24ue" path="res://stickman/body/horizontal/walk_horizontal_01.svg" id="3_sldoi"]
 [ext_resource type="Script" uid="uid://fxqvx7kr7vqh" path="res://stickman/stickman.gd" id="3_stickman"]
 [ext_resource type="Texture2D" uid="uid://bq26pfmhweoyx" path="res://stickman/body/horizontal/walk_horizontal_02.svg" id="4_wrhk3"]
@@ -11,16 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://fda7uakmjug4" path="res://stickman/body/horizontal/walk_horizontal_07.svg" id="9_df13s"]
 [ext_resource type="Texture2D" uid="uid://ors1xfx3wpen" path="res://stickman/body/horizontal/walk_horizontal_08.svg" id="10_d6aha"]
 [ext_resource type="Texture2D" uid="uid://dgk55qtcftl3w" path="res://stickman/body/vertical/walk_vertical_01.svg" id="11_0qydf"]
-[ext_resource type="Texture2D" uid="uid://bgfeqjicb0o5y" path="res://stickman/accessories/bowtie.svg" id="11_aecf4"]
-[ext_resource type="Texture2D" uid="uid://c335aq2jnu5s4" path="res://stickman/accessories/tie.svg" id="12_730a8"]
 [ext_resource type="Texture2D" uid="uid://tn540yapo51j" path="res://stickman/body/vertical/walk_vertical_02.svg" id="12_mnsci"]
-[ext_resource type="Texture2D" uid="uid://cxb8mumgu1e72" path="res://stickman/accessories/glasses.svg" id="13_oebj1"]
 [ext_resource type="Texture2D" uid="uid://bia4i3nli8713" path="res://stickman/body/vertical/walk_vertical_03.svg" id="13_wsvlm"]
-[ext_resource type="Texture2D" uid="uid://bslgfj6jpyfqf" path="res://stickman/accessories/hat_cap.svg" id="14_fjbpa"]
 [ext_resource type="Texture2D" uid="uid://bgdcsvyf2ygu7" path="res://stickman/body/vertical/walk_vertical_04.svg" id="14_su30g"]
-[ext_resource type="Texture2D" uid="uid://blypxddymwveo" path="res://stickman/accessories/hat_top.svg" id="15_aeolx"]
 [ext_resource type="Texture2D" uid="uid://bl7sjjh4kuiy" path="res://stickman/body/vertical/walk_vertical_05.svg" id="15_rl4wl"]
-[ext_resource type="Texture2D" uid="uid://bwqnhgaf8u5t3" path="res://stickman/accessories/mustache.svg" id="16_4ge5y"]
 [ext_resource type="Texture2D" uid="uid://c0wokkdknqtat" path="res://stickman/body/vertical/walk_vertical_06.svg" id="16_ug43w"]
 [ext_resource type="Texture2D" uid="uid://cb6ob1cpjeue5" path="res://stickman/body/vertical/walk_vertical_07.svg" id="17_bvwkw"]
 [ext_resource type="Texture2D" uid="uid://b2y2fqb6rm5a5" path="res://stickman/body/vertical/walk_vertical_08.svg" id="18_uwosb"]
@@ -166,18 +161,21 @@ animations = [{
 radius = 14.0
 height = 136.0
 
-[node name="Stickman" type="CharacterBody2D" unique_id=987114327 node_paths=PackedStringArray("animated_sprite", "bowtie_sprite", "tie_sprite", "glasses_sprite", "hat_cap_sprite", "hat_top_sprite", "mustache_sprite")]
+[node name="Stickman" type="CharacterBody2D" unique_id=987114327 node_paths=PackedStringArray("animated_sprite", "bowtie_sprite", "head_accessory_sprite", "eyes_accessory_sprite", "face_accessory_sprite", "neck_accessory_sprite", "chest_accessory_sprite")]
 y_sort_enabled = true
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
 script = ExtResource("3_stickman")
 animated_sprite = NodePath("AnimatedSprite2D")
-bowtie_sprite = NodePath("BowtieSprite2D")
-tie_sprite = NodePath("TieSprite2D")
-glasses_sprite = NodePath("GlassesSprite2D")
-hat_cap_sprite = NodePath("HatCapSprite2D")
-hat_top_sprite = NodePath("HatTopSprite2D")
-mustache_sprite = NodePath("MustacheSprite2D")
+bowtie_sprite = NodePath("HeadAccessorySprite2D")
+head_accessory_sprite = NodePath("HeadAccessorySprite2D")
+eyes_accessory_sprite = NodePath("EyesAccessorySprite2D")
+face_accessory_sprite = NodePath("FaceAccessorySprite2D")
+neck_accessory_sprite = NodePath("NeckAccessorySprite2D")
+chest_accessory_sprite = NodePath("ChestAccessorySprite2D")
+
+[node name="FaceSprite2D" type="Sprite2D" parent="." unique_id=805636682]
+texture = ExtResource("2_tpg7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1266758904]
 modulate = Color(0, 0, 0, 1)
@@ -188,33 +186,19 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467081984]
 position = Vector2(0, -54)
 shape = SubResource("CapsuleShape2D_sej1l")
+disabled = true
 
-[node name="BowtieSprite2D" type="Sprite2D" parent="." unique_id=1259095385]
-visible = false
+[node name="HeadAccessorySprite2D" type="Sprite2D" parent="." unique_id=1259095385]
 modulate = Color(0, 0, 0, 1)
-texture = ExtResource("11_aecf4")
 
-[node name="TieSprite2D" type="Sprite2D" parent="." unique_id=465287191]
-visible = false
+[node name="EyesAccessorySprite2D" type="Sprite2D" parent="." unique_id=465287191]
 modulate = Color(0, 0, 0, 1)
-texture = ExtResource("12_730a8")
 
-[node name="GlassesSprite2D" type="Sprite2D" parent="." unique_id=1764639747]
-visible = false
+[node name="FaceAccessorySprite2D" type="Sprite2D" parent="." unique_id=1764639747]
 modulate = Color(0, 0, 0, 1)
-texture = ExtResource("13_oebj1")
 
-[node name="HatCapSprite2D" type="Sprite2D" parent="." unique_id=1106235137]
-visible = false
+[node name="NeckAccessorySprite2D" type="Sprite2D" parent="." unique_id=1106235137]
 modulate = Color(0, 0, 0, 1)
-texture = ExtResource("14_fjbpa")
 
-[node name="HatTopSprite2D" type="Sprite2D" parent="." unique_id=1763765795]
-visible = false
+[node name="ChestAccessorySprite2D" type="Sprite2D" parent="." unique_id=1763765795]
 modulate = Color(0, 0, 0, 1)
-texture = ExtResource("15_aeolx")
-
-[node name="MustacheSprite2D" type="Sprite2D" parent="." unique_id=1682749148]
-visible = false
-modulate = Color(0, 0, 0, 1)
-texture = ExtResource("16_4ge5y")
