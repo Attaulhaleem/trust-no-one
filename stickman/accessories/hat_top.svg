@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 320" style="color:#1a1a1a;">
+  <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+  
+<g fill="currentColor">
+  <rect x="78" y="43" width="44" height="6" rx="2"/>
+  <rect x="84" y="11" width="32" height="34"/>
+  <rect x="84" y="37" width="32" height="6" fill="#ffffff" opacity="0.25"/>
+</g>
+
+  </g>
+</svg>
