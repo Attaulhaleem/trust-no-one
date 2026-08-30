@@ -70,4 +70,3 @@ func _spawn_instance(spawn_position: Vector2, is_special: bool) -> void:
 			_set_random_sprite_color(stickman.chest_accessory_sprite)
 		if is_special:
 			stickman.is_special = true
-			stickman.modulate = Color.RED

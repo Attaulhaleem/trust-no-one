@@ -1,125 +1,215 @@
-[gd_scene format=3 uid="uid://b7ciplmv36mur"]
+[gd_scene format=3 uid="uid://c5b62gg4y0yt8"]
 
-[ext_resource type="Texture2D" uid="uid://d3fsjbxi7jiyh" path="res://assets/accessories/head_accessories/top_hat.svg" id="1_dhmh2"]
-[ext_resource type="Texture2D" uid="uid://cmj3h2autnvtt" path="res://assets/accessories/eyes_accessories/sunglasses.svg" id="2_cfqto"]
-[ext_resource type="Texture2D" uid="uid://bq63xn0nvvi02" path="res://assets/accessories/face_accessories/goatee.svg" id="3_gh5nh"]
-[ext_resource type="Texture2D" uid="uid://6204q0nm6ppo" path="res://assets/accessories/neck_accessories/bow_tie.svg" id="4_26ghq"]
-[ext_resource type="Texture2D" uid="uid://cpls3fayorory" path="res://assets/accessories/chest_accessories/heart_pin.svg" id="5_f215b"]
+[ext_resource type="Script" uid="uid://cm3ll05riut7j" path="res://scenes/game/ui_manager.gd" id="1_script"]
 
-[node name="UIManager" type="CanvasLayer" unique_id=2116754329]
+[sub_resource type="LabelSettings" id="LabelSettings_sej1l"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UIManager" type="CanvasLayer" unique_id=2116754329 node_paths=PackedStringArray("targets_label", "casualties_label", "time_label", "head_tex", "eyes_tex", "face_tex", "neck_tex", "chest_tex")]
 layer = 100
+script = ExtResource("1_script")
+targets_label = NodePath("Hud/HBoxContainer/TargetsLabel")
+casualties_label = NodePath("Hud/HBoxContainer/CasualtiesLabel")
+time_label = NodePath("Hud/HBoxContainer/TimeLabel")
+head_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer/TextureRect")
+eyes_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer/TextureRect")
+face_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer/TextureRect")
+neck_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer/TextureRect")
+chest_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer/TextureRect")
 
-[node name="HudHBoxContainer" type="HBoxContainer" parent="." unique_id=1930789201]
+[node name="Hud" type="Control" parent="." unique_id=2143708593]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud" unique_id=1930789201]
+layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 23.0
 grow_horizontal = 2
+mouse_filter = 2
 
-[node name="TargetsLabel" type="Label" parent="HudHBoxContainer" unique_id=1122655897]
+[node name="TargetsLabel" type="Label" parent="Hud/HBoxContainer" unique_id=1122655897]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Targets: 0 / 3"
+text = "Targets: 0 / 1"
 
-[node name="TimeLabel" type="Label" parent="HudHBoxContainer" unique_id=1037338327]
+[node name="TimeLabel" type="Label" parent="Hud/HBoxContainer" unique_id=1037338327]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "01:00"
 
-[node name="CasualtiesLabel" type="Label" parent="HudHBoxContainer" unique_id=1227240123]
+[node name="CasualtiesLabel" type="Label" parent="Hud/HBoxContainer" unique_id=1227240123]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Casualties: 0 / 3"
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=391308954]
+[node name="DescriptionPanel" type="Control" parent="." unique_id=1226965571]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DescriptionPanel" unique_id=391308954]
+layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
+offset_top = -258.0
+offset_right = 185.0
+offset_bottom = 258.0
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=485458719]
+[node name="VBoxContainer" type="VBoxContainer" parent="DescriptionPanel/PanelContainer" unique_id=485458719]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="HeadHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=87294211]
+[node name="HeadHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=87294211]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=815819925]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=815819925]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Headwear"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=1581728437]
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=1581728437]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("1_dhmh2")
+mouse_filter = 2
 expand_mode = 2
 
-[node name="EyesHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=650397552]
+[node name="EyesHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=650397552]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=2071337455]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=2071337455]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Eyewear"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=1465722565]
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=1465722565]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("2_cfqto")
+mouse_filter = 2
 expand_mode = 2
 
-[node name="FaceHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1421800690]
+[node name="FaceHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1421800690]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=394856914]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=394856914]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Facial Hair"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=622765740]
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=622765740]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("3_gh5nh")
+mouse_filter = 2
 expand_mode = 2
 
-[node name="NeckHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1707126826]
+[node name="NeckHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1707126826]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=889720885]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=889720885]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Neckwear"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=1336455415]
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=1336455415]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("4_26ghq")
+mouse_filter = 2
 expand_mode = 2
 
-[node name="ChestHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1568078301]
+[node name="ChestHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1568078301]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=699974222]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=699974222]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Brooches"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=27654054]
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=27654054]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("5_f215b")
+mouse_filter = 2
 expand_mode = 2
+
+[node name="GameOverMenu" type="Control" parent="." unique_id=737702959]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOverMenu" unique_id=76617378]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/ColorRect" unique_id=179663820]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=299301606]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "You Lost!"
+label_settings = SubResource("LabelSettings_sej1l")
+
+[node name="SubtitleLabel" type="Label" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1077416229]
+layout_mode = 2
+
+[node name="ReplayButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1695141775]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Replay"
+
+[node name="QuitButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1499125175]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+text = "Quit"

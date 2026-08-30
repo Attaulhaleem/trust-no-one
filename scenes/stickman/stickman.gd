@@ -1,12 +1,15 @@
 class_name Stickman
 extends CharacterBody2D
 
+signal died(stickman: Stickman)
+
 enum AIState {IDLE, WALKING}
 
 const IDLE_ANIMATION := &"idle"
 const WALK_HORIZONTAL_ANIMATION := &"walk_horizontal"
 const WALK_VERTICAL_ANIMATION := &"walk_vertical"
 const DEATH_ANIMATION := &"death"
+const DANCE_ANIMATION := &"dance"
 const MOVE_LEFT_ACTION := &"move_left"
 const MOVE_RIGHT_ACTION := &"move_right"
 const MOVE_UP_ACTION := &"move_up"
@@ -63,6 +66,7 @@ const MOVE_DOWN_ACTION := &"move_down"
 
 var is_special: bool = false # For assassin status
 var is_dead: bool = false
+var game_over_frozen: bool = false
 
 var ai_current_state: AIState = AIState.IDLE
 var ai_state_timer: float = 0.0
@@ -89,7 +93,7 @@ func _on_mouse_exited() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if is_dead:
+	if is_dead or game_over_frozen:
 		return
 
 	if is_controllable:
@@ -183,14 +187,17 @@ func _update_walk_animation() -> void:
 
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if is_dead:
+	if is_dead or game_over_frozen:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_die()
 
 
 func _die() -> void:
+	if is_dead:
+		return
 	is_dead = true
+	died.emit(self)
 	velocity = Vector2.ZERO
 	if default_cursor:
 		Input.set_custom_mouse_cursor(default_cursor, Input.CURSOR_ARROW, default_cursor.get_size() / 2.0)
@@ -216,6 +223,30 @@ func _die() -> void:
 	get_tree().create_timer(blood.lifetime * 1.5).timeout.connect(blood.queue_free)
 	
 	# Fade out accessories
+	_fade_accessories()
+	
+	if animated_sprite:
+		animated_sprite.play(DEATH_ANIMATION)
+		animated_sprite.animation_finished.connect(queue_free)
+	else:
+		queue_free()
+
+func freeze() -> void:
+	game_over_frozen = true
+	velocity = Vector2.ZERO
+	if animated_sprite:
+		animated_sprite.play(IDLE_ANIMATION)
+
+func play_dance() -> void:
+	if animated_sprite:
+		animated_sprite.play(DANCE_ANIMATION)
+
+func mass_die() -> void:
+	if animated_sprite:
+		animated_sprite.play(DEATH_ANIMATION)
+	_fade_accessories()
+
+func _fade_accessories() -> void:
 	var tween := create_tween()
 	tween.set_parallel(true)
 	var fade_time := 0.5
@@ -225,9 +256,3 @@ func _die() -> void:
 	if neck_accessory_sprite: tween.tween_property(neck_accessory_sprite, "modulate:a", 0.0, fade_time)
 	if chest_accessory_sprite: tween.tween_property(chest_accessory_sprite, "modulate:a", 0.0, fade_time)
 	if bowtie_sprite: tween.tween_property(bowtie_sprite, "modulate:a", 0.0, fade_time)
-	
-	if animated_sprite:
-		animated_sprite.play(DEATH_ANIMATION)
-		animated_sprite.animation_finished.connect(queue_free)
-	else:
-		queue_free()

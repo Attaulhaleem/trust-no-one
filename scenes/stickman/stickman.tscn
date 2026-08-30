@@ -32,6 +32,14 @@
 [ext_resource type="Texture2D" uid="uid://cb6ob1cpjeue5" path="res://assets/stickman/move_vertical/walk_vertical_07.svg" id="28_s0x3a"]
 [ext_resource type="Texture2D" uid="uid://b2y2fqb6rm5a5" path="res://assets/stickman/move_vertical/walk_vertical_08.svg" id="29_gtyyh"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmwkn"]
+atlas = ExtResource("23_t67ub")
+region = Rect2(0, 0, 200, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrowu"]
+atlas = ExtResource("29_gtyyh")
+region = Rect2(0, 0, 200, 320)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_cnexd"]
 atlas = ExtResource("3_kmwkn")
 region = Rect2(0, 0, 200, 320)
@@ -142,6 +150,32 @@ region = Rect2(0, 0, 200, 320)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sej1l"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmwkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrowu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmwkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrowu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmwkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrowu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmwkn")
+}],
+"loop": 1,
+"name": &"dance",
+"speed": 6.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cnexd")
@@ -269,8 +303,10 @@ texture = ExtResource("2_72io0")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1266758904]
 modulate = Color(0, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_sej1l")
-animation = &"death"
+animation = &"dance"
 autoplay = "idle"
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=467081984]
 shape = SubResource("CapsuleShape2D_sej1l")
