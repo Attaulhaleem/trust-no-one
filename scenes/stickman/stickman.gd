@@ -169,5 +169,40 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 func _die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
+	
+	# Create blood particles and add them to the parent so they aren't destroyed when stickman is freed
+	var blood := CPUParticles2D.new()
+	blood.emitting = false
+	blood.amount = 30
+	blood.one_shot = true
+	blood.explosiveness = 0.95
+	blood.lifetime = 0.8
+	blood.direction = Vector2(0, -1)
+	blood.spread = 60.0
+	blood.gravity = Vector2(0, 800)
+	blood.initial_velocity_min = 150.0
+	blood.initial_velocity_max = 350.0
+	blood.scale_amount_min = 4.0
+	blood.scale_amount_max = 8.0
+	blood.color = Color(0.7, 0.0, 0.0)
+	blood.position = global_position
+	get_parent().add_child(blood)
+	blood.emitting = true
+	get_tree().create_timer(blood.lifetime * 1.5).timeout.connect(blood.queue_free)
+	
+	# Fade out accessories
+	var tween := create_tween()
+	tween.set_parallel(true)
+	var fade_time := 0.5
+	if head_accessory_sprite: tween.tween_property(head_accessory_sprite, "modulate:a", 0.0, fade_time)
+	if eyes_accessory_sprite: tween.tween_property(eyes_accessory_sprite, "modulate:a", 0.0, fade_time)
+	if face_accessory_sprite: tween.tween_property(face_accessory_sprite, "modulate:a", 0.0, fade_time)
+	if neck_accessory_sprite: tween.tween_property(neck_accessory_sprite, "modulate:a", 0.0, fade_time)
+	if chest_accessory_sprite: tween.tween_property(chest_accessory_sprite, "modulate:a", 0.0, fade_time)
+	if bowtie_sprite: tween.tween_property(bowtie_sprite, "modulate:a", 0.0, fade_time)
+	
 	if animated_sprite:
 		animated_sprite.play(DEATH_ANIMATION)
+		animated_sprite.animation_finished.connect(queue_free)
+	else:
+		queue_free()
