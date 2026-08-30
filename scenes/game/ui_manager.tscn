@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c5b62gg4y0yt8"]
+[gd_scene format=3 uid="uid://bfgfxsdbdqkae"]
 
 [ext_resource type="Script" uid="uid://cm3ll05riut7j" path="res://scenes/game/ui_manager.gd" id="1_script"]
 
@@ -7,12 +7,23 @@ font_size = 64
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
-[node name="UIManager" type="CanvasLayer" unique_id=2116754329 node_paths=PackedStringArray("targets_label", "casualties_label", "time_label", "head_tex", "eyes_tex", "face_tex", "neck_tex", "chest_tex")]
+[node name="UIManager" type="CanvasLayer" unique_id=2116754329 node_paths=PackedStringArray("targets_label", "casualties_label", "time_label", "game_over_menu", "game_over_title_label", "game_over_subtitle_label", "replay_button", "quit_button", "start_menu", "start_button", "start_quit_button", "hud", "description_panel", "head_tex", "eyes_tex", "face_tex", "neck_tex", "chest_tex")]
+process_mode = 3
 layer = 100
 script = ExtResource("1_script")
 targets_label = NodePath("Hud/HBoxContainer/TargetsLabel")
 casualties_label = NodePath("Hud/HBoxContainer/CasualtiesLabel")
 time_label = NodePath("Hud/HBoxContainer/TimeLabel")
+game_over_menu = NodePath("GameOverMenu")
+game_over_title_label = NodePath("GameOverMenu/ColorRect/VBoxContainer/TitleLabel")
+game_over_subtitle_label = NodePath("GameOverMenu/ColorRect/VBoxContainer/SubtitleLabel")
+replay_button = NodePath("GameOverMenu/ColorRect/VBoxContainer/ReplayButton")
+quit_button = NodePath("GameOverMenu/ColorRect/VBoxContainer/QuitButton")
+start_menu = NodePath("StartMenu")
+start_button = NodePath("StartMenu/ColorRect/VBoxContainer/StartButton")
+start_quit_button = NodePath("StartMenu/ColorRect/VBoxContainer/QuitButton")
+hud = NodePath("Hud")
+description_panel = NodePath("DescriptionPanel")
 head_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer/TextureRect")
 eyes_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer/TextureRect")
 face_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer/TextureRect")
@@ -203,13 +214,70 @@ label_settings = SubResource("LabelSettings_sej1l")
 
 [node name="SubtitleLabel" type="Label" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1077416229]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="ReplayButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1695141775]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Replay"
 
 [node name="QuitButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1499125175]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="StartMenu" type="Control" parent="." unique_id=2094147736]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="StartMenu" unique_id=1814304805]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/ColorRect" unique_id=145245997]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=610869875]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Sketchy Characters"
+label_settings = SubResource("LabelSettings_sej1l")
+
+[node name="SubtitleLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=874438765]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Locate and eliminate the target matching the description."
+
+[node name="StartButton" type="Button" parent="StartMenu/ColorRect/VBoxContainer" unique_id=1118877507]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="StartMenu/ColorRect/VBoxContainer" unique_id=524958953]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
 text = "Quit"

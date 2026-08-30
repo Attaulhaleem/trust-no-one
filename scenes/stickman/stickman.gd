@@ -83,7 +83,7 @@ func _ready() -> void:
 
 
 func _on_mouse_entered() -> void:
-	if not is_dead and zoom_cursor:
+	if not is_dead and not game_over_frozen and not get_tree().paused and zoom_cursor:
 		Input.set_custom_mouse_cursor(zoom_cursor, Input.CURSOR_ARROW, zoom_cursor.get_size() / 2.0)
 
 

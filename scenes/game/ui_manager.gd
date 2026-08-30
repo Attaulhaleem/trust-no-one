@@ -1,10 +1,24 @@
 class_name UIManager
 extends CanvasLayer
 
+signal start_game
+
+@export_group("Nodes")
 @export var targets_label: Label
 @export var casualties_label: Label
 @export var time_label: Label
+@export var game_over_menu: Control
+@export var game_over_title_label: Label
+@export var game_over_subtitle_label: Label
+@export var replay_button: Button
+@export var quit_button: Button
+@export var start_menu: Control
+@export var start_button: Button
+@export var start_quit_button: Button
+@export var hud: Control
+@export var description_panel: Control
 
+@export_group("Resources")
 @export var head_tex: TextureRect
 @export var eyes_tex: TextureRect
 @export var face_tex: TextureRect
@@ -55,28 +69,51 @@ func update_witness_statement(target: Stickman):
 	else:
 		chest_tex.texture = null
 
+
 func update_targets(killed: int, total: int):
 	targets_label.text = "Targets: %d / %d" % [killed, total]
+
 
 func update_time(time_left: float):
 	var minutes = int(time_left) / 60
 	var seconds = int(time_left) % 60
 	time_label.text = "%02d:%02d" % [minutes, seconds]
 
+
 func update_casualties(killed: int, max_allowed: int):
 	casualties_label.text = "Casualties: %d / %d" % [killed, max_allowed]
 
-@onready var game_over_menu = $GameOverMenu
-@onready var game_over_title_label = $GameOverMenu/ColorRect/VBoxContainer/TitleLabel
-@onready var game_over_subtitle_label = $GameOverMenu/ColorRect/VBoxContainer/SubtitleLabel
-@onready var replay_button = $GameOverMenu/ColorRect/VBoxContainer/ReplayButton
-@onready var quit_button = $GameOverMenu/ColorRect/VBoxContainer/QuitButton
 
 func _ready():
-	replay_button.pressed.connect(func(): get_tree().reload_current_scene())
+	Input.set_custom_mouse_cursor(null)
+	hud.hide()
+	description_panel.hide()
+	
+	if Engine.has_meta("skip_start") and Engine.get_meta("skip_start"):
+		Engine.set_meta("skip_start", false)
+		call_deferred("_on_start_pressed")
+	
+	start_button.pressed.connect(_on_start_pressed)
+	start_quit_button.pressed.connect(func(): get_tree().quit())
+	
+	replay_button.pressed.connect(func(): 
+		Engine.set_meta("skip_start", true)
+		get_tree().reload_current_scene()
+	)
 	quit_button.pressed.connect(func(): get_tree().quit())
 
+
+func _on_start_pressed():
+	start_menu.hide()
+	hud.show()
+	description_panel.show()
+	start_game.emit()
+
+
 func show_game_over(reason: String):
+	Input.set_custom_mouse_cursor(null)
+	hud.hide()
+	description_panel.hide()
 	game_over_title_label.text = GAME_OVER_TITLE[reason]
 	game_over_subtitle_label.text = GAME_OVER_SUBTITLE[reason]
 	game_over_menu.show()

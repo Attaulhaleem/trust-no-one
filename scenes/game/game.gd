@@ -11,8 +11,13 @@ var time_left: float = 60.0
 var game_over: bool = false
 
 func _ready():
+	get_tree().paused = true
+	ui_manager.start_game.connect(_on_start_game)
 	# Wait for spawner to finish spawning in its _ready
 	call_deferred("_initialize_game")
+
+func _on_start_game():
+	get_tree().paused = false
 
 func _initialize_game():
 	var stickmen = get_tree().get_nodes_in_group("stickman")
