@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bky3r4l7qljfk"]
+
+[ext_resource type="Texture2D" uid="uid://dv8wlx1jsyvgd" path="res://assets/ui/target.svg" id="1_5645d"]
+[ext_resource type="Texture2D" uid="uid://brr6oyuvtjq7o" path="res://assets/ui/time.svg" id="2_xu0sl"]
+[ext_resource type="Texture2D" uid="uid://dxcekayumed3n" path="res://assets/ui/warning.svg" id="3_8m1vl"]
+
+[node name="Hud" type="Control" unique_id=1646257012]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1437481886]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TargetsBox" type="HBoxContainer" parent="HBoxContainer" unique_id=1068681514]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/TargetsBox" unique_id=1617899135]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_5645d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TargetsLabel" type="Label" parent="HBoxContainer/TargetsBox" unique_id=1324208001]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Targets 0 / 1"
+
+[node name="TimeBox" type="HBoxContainer" parent="HBoxContainer" unique_id=609989225]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/TimeBox" unique_id=1617993309]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_xu0sl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/TimeBox" unique_id=1879565802]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "01:00"
+
+[node name="CasualtiesBox" type="HBoxContainer" parent="HBoxContainer" unique_id=19079496]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/CasualtiesBox" unique_id=2034924711]
+modulate = Color(0.8, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_8m1vl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CasualtiesLabel" type="Label" parent="HBoxContainer/CasualtiesBox" unique_id=886802884]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Casualties 0 / 3"

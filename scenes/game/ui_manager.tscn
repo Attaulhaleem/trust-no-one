@@ -1,8 +1,28 @@
 [gd_scene format=3 uid="uid://bfgfxsdbdqkae"]
 
 [ext_resource type="Script" uid="uid://cm3ll05riut7j" path="res://scenes/game/ui_manager.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dv8wlx1jsyvgd" path="res://assets/ui/target.svg" id="hud_target"]
+[ext_resource type="Texture2D" uid="uid://brr6oyuvtjq7o" path="res://assets/ui/time.svg" id="hud_time"]
+[ext_resource type="Texture2D" uid="uid://dxcekayumed3n" path="res://assets/ui/warning.svg" id="hud_warn"]
+[ext_resource type="Texture2D" uid="uid://dv1kgps0c615i" path="res://assets/ui/unavailable.svg" id="unavail_icon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_desc"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.12, 0.13, 0.16, 0.15)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_sej1l"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dhmh2"]
 font_size = 64
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
@@ -11,9 +31,9 @@ outline_color = Color(0, 0, 0, 1)
 process_mode = 3
 layer = 100
 script = ExtResource("1_script")
-targets_label = NodePath("Hud/HBoxContainer/TargetsLabel")
-casualties_label = NodePath("Hud/HBoxContainer/CasualtiesLabel")
-time_label = NodePath("Hud/HBoxContainer/TimeLabel")
+targets_label = NodePath("Hud/HBoxContainer/TargetsBox/TargetsLabel")
+casualties_label = NodePath("Hud/HBoxContainer/CasualtiesBox/CasualtiesLabel")
+time_label = NodePath("Hud/HBoxContainer/TimeBox/TimeLabel")
 game_over_menu = NodePath("GameOverMenu")
 game_over_title_label = NodePath("GameOverMenu/ColorRect/VBoxContainer/TitleLabel")
 game_over_subtitle_label = NodePath("GameOverMenu/ColorRect/VBoxContainer/SubtitleLabel")
@@ -29,8 +49,9 @@ eyes_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxConta
 face_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer/TextureRect")
 neck_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer/TextureRect")
 chest_tex = NodePath("DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer/TextureRect")
+unavailable_icon = ExtResource("unavail_icon")
 
-[node name="Hud" type="Control" parent="." unique_id=2143708593]
+[node name="Hud" type="Control" parent="." unique_id=1646257012]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,36 +60,78 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Hud" unique_id=1930789201]
+[node name="HBoxContainer" type="HBoxContainer" parent="Hud" unique_id=1437481886]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 23.0
+offset_bottom = 60.0
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="TargetsLabel" type="Label" parent="Hud/HBoxContainer" unique_id=1122655897]
+[node name="TargetsBox" type="HBoxContainer" parent="Hud/HBoxContainer" unique_id=1068681514]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "Targets: 0 / 1"
+size_flags_vertical = 4
+theme_override_constants/separation = 12
 
-[node name="TimeLabel" type="Label" parent="Hud/HBoxContainer" unique_id=1037338327]
+[node name="Icon" type="TextureRect" parent="Hud/HBoxContainer/TargetsBox" unique_id=1617899135]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("hud_target")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TargetsLabel" type="Label" parent="Hud/HBoxContainer/TargetsBox" unique_id=1324208001]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Targets 0 / 1"
+
+[node name="TimeBox" type="HBoxContainer" parent="Hud/HBoxContainer" unique_id=609989225]
 layout_mode = 2
 size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="Icon" type="TextureRect" parent="Hud/HBoxContainer/TimeBox" unique_id=1617993309]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("hud_time")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TimeLabel" type="Label" parent="Hud/HBoxContainer/TimeBox" unique_id=1879565802]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 28
 text = "01:00"
 
-[node name="CasualtiesLabel" type="Label" parent="Hud/HBoxContainer" unique_id=1227240123]
+[node name="CasualtiesBox" type="HBoxContainer" parent="Hud/HBoxContainer" unique_id=19079496]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 48
-text = "Casualties: 0 / 3"
+size_flags_vertical = 4
+theme_override_constants/separation = 12
 
-[node name="DescriptionPanel" type="Control" parent="." unique_id=1226965571]
+[node name="Icon" type="TextureRect" parent="Hud/HBoxContainer/CasualtiesBox" unique_id=2034924711]
+modulate = Color(0.8, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("hud_warn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CasualtiesLabel" type="Label" parent="Hud/HBoxContainer/CasualtiesBox" unique_id=886802884]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Casualties 0 / 3"
+
+[node name="DescriptionPanel" type="Control" parent="." unique_id=1874955571]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,117 +140,195 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="DescriptionPanel" unique_id=391308954]
+[node name="PanelContainer" type="PanelContainer" parent="DescriptionPanel" unique_id=363202525]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -258.0
-offset_right = 185.0
-offset_bottom = 258.0
+offset_top = -143.5
+offset_right = 192.0
+offset_bottom = 143.5
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_desc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DescriptionPanel/PanelContainer" unique_id=485458719]
+[node name="VBoxContainer" type="VBoxContainer" parent="DescriptionPanel/PanelContainer" unique_id=851558226]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1226888227]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 16
+text = "TARGET DESCRIPTION"
+
+[node name="HeadHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=824906167]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1180498641]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "  Target Description"
-
-[node name="HeadHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=87294211]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=815819925]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=798067872]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 18
 text = "Headwear"
 
-[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=1581728437]
-custom_minimum_size = Vector2(100, 100)
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=762337364]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
-expand_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="EyesHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=650397552]
+[node name="EyesHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=759411838]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=2071337455]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=1279236126]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 18
 text = "Eyewear"
 
-[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=1465722565]
-custom_minimum_size = Vector2(100, 100)
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=1508230296]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
-expand_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="FaceHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1421800690]
+[node name="FaceHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=22547934]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=394856914]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=88410956]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 18
 text = "Facial Hair"
 
-[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=622765740]
-custom_minimum_size = Vector2(100, 100)
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=1060515951]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
-expand_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="NeckHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1707126826]
+[node name="NeckHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1360448110]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=889720885]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=799529261]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 18
 text = "Neckwear"
 
-[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=1336455415]
-custom_minimum_size = Vector2(100, 100)
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=173259310]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
-expand_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="ChestHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1568078301]
+[node name="ChestHBoxContainer" type="HBoxContainer" parent="DescriptionPanel/PanelContainer/VBoxContainer" unique_id=1866719334]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=699974222]
+[node name="Label" type="Label" parent="DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=612794480]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_font_sizes/font_size = 18
 text = "Brooches"
 
-[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=27654054]
-custom_minimum_size = Vector2(100, 100)
+[node name="TextureRect" type="TextureRect" parent="DescriptionPanel/PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=1581907968]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
-expand_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
-[node name="GameOverMenu" type="Control" parent="." unique_id=737702959]
+[node name="StartMenu" type="Control" parent="." unique_id=1602279408]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="StartMenu" unique_id=1585045943]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6666667)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/ColorRect" unique_id=1877524100]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=474184133]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Sketchy Characters"
+label_settings = SubResource("LabelSettings_sej1l")
+
+[node name="SubtitleLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=1332916930]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Locate and eliminate the target matching the description."
+
+[node name="ControlsLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=1708656957]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Controls: Mouse to move around, left-click to shoot."
+
+[node name="StartButton" type="Button" parent="StartMenu/ColorRect/VBoxContainer" unique_id=1422890565]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="StartMenu/ColorRect/VBoxContainer" unique_id=964642694]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="GameOverMenu" type="Control" parent="." unique_id=483808418]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -196,7 +337,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="GameOverMenu" unique_id=76617378]
+[node name="ColorRect" type="ColorRect" parent="GameOverMenu" unique_id=2024899042]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -205,7 +346,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.6666667)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/ColorRect" unique_id=179663820]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu/ColorRect" unique_id=1669089748]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -219,82 +360,23 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleLabel" type="Label" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=299301606]
+[node name="TitleLabel" type="Label" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=898519332]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "You Lost!"
-label_settings = SubResource("LabelSettings_sej1l")
+label_settings = SubResource("LabelSettings_dhmh2")
 
-[node name="SubtitleLabel" type="Label" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1077416229]
+[node name="SubtitleLabel" type="Label" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=523943659]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ReplayButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1695141775]
+[node name="ReplayButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=2006262454]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Replay"
 
-[node name="QuitButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=1499125175]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Quit"
-
-[node name="StartMenu" type="Control" parent="." unique_id=2094147736]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="StartMenu" unique_id=1814304805]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.6666667)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu/ColorRect" unique_id=145245997]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TitleLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=610869875]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Sketchy Characters"
-label_settings = SubResource("LabelSettings_sej1l")
-
-[node name="SubtitleLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=874438765]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Locate and eliminate the target matching the description."
-
-[node name="ControlsLabel" type="Label" parent="StartMenu/ColorRect/VBoxContainer" unique_id=633904949]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Controls: Mouse to move around, left-click to shoot."
-
-[node name="StartButton" type="Button" parent="StartMenu/ColorRect/VBoxContainer" unique_id=1118877507]
-custom_minimum_size = Vector2(200, 60)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Start"
-
-[node name="QuitButton" type="Button" parent="StartMenu/ColorRect/VBoxContainer" unique_id=524958953]
+[node name="QuitButton" type="Button" parent="GameOverMenu/ColorRect/VBoxContainer" unique_id=228049959]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 4

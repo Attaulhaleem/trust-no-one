@@ -50,50 +50,57 @@ func _get_cropped_texture(texture: Texture2D) -> Texture2D:
 		return atlas
 	return texture
 
+@export var unavailable_icon: Texture2D
+
 func update_witness_statement(target: Stickman):
 	if target.head_accessory:
 		head_tex.texture = _get_cropped_texture(target.head_accessory.texture)
 		head_tex.modulate = target.head_accessory_sprite.modulate
 	else:
-		head_tex.texture = null
+		head_tex.texture = unavailable_icon
+		head_tex.modulate = Color.WHITE
 		
 	if target.eyes_accessory:
 		eyes_tex.texture = _get_cropped_texture(target.eyes_accessory.texture)
 		eyes_tex.modulate = target.eyes_accessory_sprite.modulate
 	else:
-		eyes_tex.texture = null
+		eyes_tex.texture = unavailable_icon
+		eyes_tex.modulate = Color.WHITE
 		
 	if target.face_accessory:
 		face_tex.texture = _get_cropped_texture(target.face_accessory.texture)
 		face_tex.modulate = target.face_accessory_sprite.modulate
 	else:
-		face_tex.texture = null
+		face_tex.texture = unavailable_icon
+		face_tex.modulate = Color.WHITE
 		
 	if target.neck_accessory:
 		neck_tex.texture = _get_cropped_texture(target.neck_accessory.texture)
 		neck_tex.modulate = target.neck_accessory_sprite.modulate
 	else:
-		neck_tex.texture = null
+		neck_tex.texture = unavailable_icon
+		neck_tex.modulate = Color.WHITE
 		
 	if target.chest_accessory:
 		chest_tex.texture = _get_cropped_texture(target.chest_accessory.texture)
 		chest_tex.modulate = target.chest_accessory_sprite.modulate
 	else:
-		chest_tex.texture = null
+		chest_tex.texture = unavailable_icon
+		chest_tex.modulate = Color.WHITE
 
 
 func update_targets(killed: int, total: int):
-	targets_label.text = "Targets: %d / %d" % [killed, total]
+	targets_label.text = "Targets %d/%d" % [killed, total]
 
 
 func update_time(time_left: float):
-	var minutes = int(time_left) / 60
+	var minutes = int(time_left / 60)
 	var seconds = int(time_left) % 60
 	time_label.text = "%02d:%02d" % [minutes, seconds]
 
 
 func update_casualties(killed: int, max_allowed: int):
-	casualties_label.text = "Casualties: %d / %d" % [killed, max_allowed]
+	casualties_label.text = "Casualties %d/%d" % [killed, max_allowed]
 
 
 func _ready():
