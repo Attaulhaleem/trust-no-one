@@ -23,6 +23,7 @@ var game_over: bool = false
 func _ready():
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	bgm_player.finished.connect(bgm_player.play)
 	add_child(bgm_player)
 	_play_bgm(bgm_menu)
 	
