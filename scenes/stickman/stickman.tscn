@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://fxqvx7kr7vqh" path="res://scenes/stickman/stickman.gd" id="1_vdaq4"]
 [ext_resource type="Texture2D" uid="uid://bo36wc5m22la5" path="res://assets/stickman/face/face_fill.svg" id="2_72io0"]
+[ext_resource type="Texture2D" uid="uid://cw3opolurq2bg" path="res://assets/crosshair/crosshair_brackets.svg" id="2_kmwkn"]
+[ext_resource type="Texture2D" uid="uid://bhpw7201p8cwd" path="res://assets/crosshair/crosshair_brackets _zoom.svg" id="3_hrowu"]
 [ext_resource type="Texture2D" uid="uid://btjy1rdkvk5lx" path="res://assets/stickman/death/death_01.svg" id="3_kmwkn"]
 [ext_resource type="Texture2D" uid="uid://cwmeaad6cnvxf" path="res://assets/stickman/death/death_02.svg" id="4_hrowu"]
 [ext_resource type="Texture2D" uid="uid://c7bn1ib0wfmn7" path="res://assets/stickman/death/death_03.svg" id="5_ky35r"]
@@ -258,6 +260,8 @@ eyes_accessory_sprite = NodePath("EyesAccessorySprite2D")
 face_accessory_sprite = NodePath("FaceAccessorySprite2D")
 neck_accessory_sprite = NodePath("NeckAccessorySprite2D")
 chest_accessory_sprite = NodePath("ChestAccessorySprite2D")
+default_cursor = ExtResource("2_kmwkn")
+zoom_cursor = ExtResource("3_hrowu")
 
 [node name="FaceSprite2D" type="Sprite2D" parent="." unique_id=805636682]
 texture = ExtResource("2_72io0")

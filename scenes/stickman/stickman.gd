@@ -21,7 +21,9 @@ const MOVE_DOWN_ACTION := &"move_down"
 @export var neck_accessory_sprite: Sprite2D
 @export var chest_accessory_sprite: Sprite2D
 
-@export_group("Accessories")
+@export_group("Resources")
+@export var default_cursor: Texture2D = null
+@export var zoom_cursor: Texture2D = null
 @export var head_accessory: HeadAccessory = null:
 	set(value):
 		head_accessory = value
@@ -70,6 +72,18 @@ var ai_speed_modifier: float = 1.0
 func _ready() -> void:
 	motion_mode = MOTION_MODE_FLOATING
 	input_pickable = true
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
+
+
+func _on_mouse_entered() -> void:
+	if not is_dead and zoom_cursor:
+		Input.set_custom_mouse_cursor(zoom_cursor, Input.CURSOR_ARROW, zoom_cursor.get_size() / 2.0)
+
+
+func _on_mouse_exited() -> void:
+	if default_cursor:
+		Input.set_custom_mouse_cursor(default_cursor, Input.CURSOR_ARROW, default_cursor.get_size() / 2.0)
 
 
 func _physics_process(delta: float) -> void:
@@ -169,6 +183,8 @@ func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> vo
 func _die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
+	if default_cursor:
+		Input.set_custom_mouse_cursor(default_cursor, Input.CURSOR_ARROW, default_cursor.get_size() / 2.0)
 	
 	# Create blood particles and add them to the parent so they aren't destroyed when stickman is freed
 	var blood := CPUParticles2D.new()
