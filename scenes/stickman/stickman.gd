@@ -187,9 +187,10 @@ func _update_walk_animation() -> void:
 
 
 func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
-	if is_dead or game_over_frozen:
+	if is_dead or game_over_frozen or get_tree().paused:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		get_viewport().set_input_as_handled()
 		_die()
 
 

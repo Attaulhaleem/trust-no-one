@@ -3,6 +3,12 @@ extends Node2D
 @export var ui_manager: UIManager
 @export var spawner: Spawner
 
+var sfx_casualty = preload("res://assets/sfx/casualty.wav")
+var sfx_elimination = preload("res://assets/sfx/elimination.wav")
+var sfx_game_lost = preload("res://assets/sfx/game_lost.wav")
+var sfx_game_won = preload("res://assets/sfx/game_won.wav")
+var sfx_shoot_miss = preload("res://assets/sfx/shoot_miss.wav")
+
 var total_targets = 0
 var killed_targets = 0
 var casualties = 0
@@ -18,6 +24,20 @@ func _ready():
 
 func _on_start_game():
 	get_tree().paused = false
+
+func _play_sfx(stream: AudioStream):
+	var player = AudioStreamPlayer.new()
+	player.stream = stream
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(player)
+	player.play()
+	player.finished.connect(player.queue_free)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if game_over or get_tree().paused:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_play_sfx(sfx_shoot_miss)
 
 func _initialize_game():
 	var stickmen = get_tree().get_nodes_in_group("stickman")
@@ -53,12 +73,14 @@ func _on_stickman_died(stickman: Stickman):
 		return
 		
 	if stickman.is_special:
+		_play_sfx(sfx_elimination)
 		_spawn_floating_text("NEUTRALIZED", stickman.global_position, Color.YELLOW)
 		killed_targets += 1
 		ui_manager.update_targets(killed_targets, total_targets)
 		if killed_targets >= total_targets:
 			_trigger_win()
 	else:
+		_play_sfx(sfx_casualty)
 		_spawn_floating_text("CIVILIAN", stickman.global_position, Color.RED)
 		casualties += 1
 		ui_manager.update_casualties(casualties, max_casualties)
@@ -67,6 +89,7 @@ func _on_stickman_died(stickman: Stickman):
 
 func _trigger_game_over(reason: String):
 	game_over = true
+	_play_sfx(sfx_game_lost)
 	var stickmen = get_tree().get_nodes_in_group("stickman")
 	for s in stickmen:
 		if s is Stickman:
@@ -77,6 +100,7 @@ func _trigger_game_over(reason: String):
 
 func _trigger_win():
 	game_over = true
+	_play_sfx(sfx_game_won)
 	var stickmen = get_tree().get_nodes_in_group("stickman")
 	for s in stickmen:
 		if s is Stickman:
