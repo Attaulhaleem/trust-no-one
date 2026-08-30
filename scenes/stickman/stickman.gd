@@ -1,3 +1,4 @@
+class_name Stickman
 extends CharacterBody2D
 
 enum AIState {IDLE, WALKING}
@@ -5,6 +6,7 @@ enum AIState {IDLE, WALKING}
 const IDLE_ANIMATION := &"idle"
 const WALK_HORIZONTAL_ANIMATION := &"walk_horizontal"
 const WALK_VERTICAL_ANIMATION := &"walk_vertical"
+const DEATH_ANIMATION := &"death"
 const MOVE_LEFT_ACTION := &"move_left"
 const MOVE_RIGHT_ACTION := &"move_right"
 const MOVE_UP_ACTION := &"move_up"
@@ -57,13 +59,8 @@ const MOVE_DOWN_ACTION := &"move_down"
 @export var ai_idle_duration_min: float = 1.0
 @export var ai_idle_duration_max: float = 3.0
 
-@onready var head_accessory_color := _set_random_sprite_color(head_accessory_sprite)
-@onready var eyes_accessory_color := _set_random_sprite_color(eyes_accessory_sprite)
-@onready var face_accessory_color := _set_random_sprite_color(face_accessory_sprite)
-@onready var neck_accessory_color := _set_random_sprite_color(neck_accessory_sprite)
-@onready var chest_accessory_color := _set_random_sprite_color(chest_accessory_sprite)
-
 var is_special: bool = false # For assassin status
+var is_dead: bool = false
 
 var ai_current_state: AIState = AIState.IDLE
 var ai_state_timer: float = 0.0
@@ -72,9 +69,13 @@ var ai_speed_modifier: float = 1.0
 
 func _ready() -> void:
 	motion_mode = MOTION_MODE_FLOATING
+	input_pickable = true
 
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		return
+
 	if is_controllable:
 		var direction := Input.get_vector(
 			MOVE_LEFT_ACTION,
@@ -137,39 +138,18 @@ func _pick_new_state() -> void:
 		ai_direction = Vector2.ZERO
 
 
-func _set_random_sprite_color(sprite: Sprite2D) -> Color:
-	var color := Color.BLACK
-
-	if sprite:
-		color = Color.from_hsv(randf(), 1.0, 1.0)
-		sprite.modulate = Color.from_hsv(randf(), 1.0, 1.0)
-
-	return color
-
-
 func _update_accessory_sprite(sprite: Sprite2D, accessory: Accessory) -> void:
 	if accessory and sprite:
 		sprite.texture = accessory.texture
 		sprite.modulate = accessory.color
 
 
-func _update_accessory_z_index(sprite: Sprite2D, accessory: Accessory) -> void:
-	if accessory and sprite:
-		sprite.z_index = accessory.back_z_index if velocity.y < 0.0 else 0
-
-
 func _update_walk_animation() -> void:
-	if animated_sprite == null:
+	if animated_sprite == null or is_dead:
 		return
 
 	if velocity.x != 0.0:
 		animated_sprite.flip_h = velocity.x > 0.0
-
-	# _update_accessory_z_index(head_accessory_sprite, head_accessory)
-	# _update_accessory_z_index(eyes_accessory_sprite, eyes_accessory)
-	# _update_accessory_z_index(face_accessory_sprite, face_accessory)
-	# _update_accessory_z_index(neck_accessory_sprite, neck_accessory)
-	# _update_accessory_z_index(chest_accessory_sprite, chest_accessory)
 
 	if velocity == Vector2.ZERO:
 		animated_sprite.play(IDLE_ANIMATION)
@@ -177,3 +157,17 @@ func _update_walk_animation() -> void:
 		animated_sprite.play(WALK_HORIZONTAL_ANIMATION)
 	elif velocity.y != 0.0:
 		animated_sprite.play(WALK_VERTICAL_ANIMATION)
+
+
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if is_dead:
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		_die()
+
+
+func _die() -> void:
+	is_dead = true
+	velocity = Vector2.ZERO
+	if animated_sprite:
+		animated_sprite.play(DEATH_ANIMATION)

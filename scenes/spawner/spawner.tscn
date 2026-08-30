@@ -1,6 +1,28 @@
 [gd_scene format=3 uid="uid://jheuvf6o6fpa"]
 
-[ext_resource type="Script" uid="uid://m3pm4b4dlfw6" path="res://scenes/spawner/spawner.gd" id="1_2vbf6"]
+[ext_resource type="Script" uid="uid://m3pm4b4dlfw6" path="res://scenes/spawner/spawner.gd" id="1_c80uj"]
+[ext_resource type="Script" uid="uid://vub72vght4em" path="res://scenes/accessories/head_accessories/head_accessory.gd" id="2_hu2hm"]
+[ext_resource type="PackedScene" uid="uid://crtb6rmnexlj2" path="res://scenes/stickman/stickman.tscn" id="2_jaypc"]
+[ext_resource type="Resource" uid="uid://d0a8kh2dm2aw8" path="res://scenes/accessories/head_accessories/beanie.tres" id="3_jaypc"]
+[ext_resource type="Resource" uid="uid://ob46xe0l3oie" path="res://scenes/accessories/head_accessories/top_hat.tres" id="5_6q3ki"]
+[ext_resource type="Script" uid="uid://dskbsxwc7daxp" path="res://scenes/accessories/eyes_accessories/eyes_accessory.gd" id="6_yuh43"]
+[ext_resource type="Resource" uid="uid://bmavh3hg5tvju" path="res://scenes/accessories/eyes_accessories/round_glasses.tres" id="7_2fesh"]
+[ext_resource type="Resource" uid="uid://c1144fimfn82n" path="res://scenes/accessories/eyes_accessories/sunglasses.tres" id="8_86hsf"]
+[ext_resource type="Script" uid="uid://mhe3wvgbxprs" path="res://scenes/accessories/face_accessories/face_accessory.gd" id="9_uycrx"]
+[ext_resource type="Resource" uid="uid://bakikrj8gi8jg" path="res://scenes/accessories/face_accessories/goatee.tres" id="10_ulibx"]
+[ext_resource type="Resource" uid="uid://bbdl7aybnjea2" path="res://scenes/accessories/face_accessories/mustache.tres" id="12_1veya"]
+[ext_resource type="Script" uid="uid://bykvgm0phi8w0" path="res://scenes/accessories/neck_accessories/neck_accessory.gd" id="13_3b78x"]
+[ext_resource type="Resource" uid="uid://c788q7r3fns3h" path="res://scenes/accessories/neck_accessories/bow_tie.tres" id="14_tj3iy"]
+[ext_resource type="Resource" uid="uid://be4plq7cb2w8" path="res://scenes/accessories/neck_accessories/scarf.tres" id="15_2c4x0"]
+[ext_resource type="Script" uid="uid://bpcyjljiqblp3" path="res://scenes/accessories/chest_accessories/chest_accessory.gd" id="17_htgxi"]
+[ext_resource type="Resource" uid="uid://kpd6srpgmfkt" path="res://scenes/accessories/chest_accessories/heart_pin.tres" id="18_pruht"]
+[ext_resource type="Resource" uid="uid://dpjp131rn5wgk" path="res://scenes/accessories/chest_accessories/star_badge.tres" id="19_0xohq"]
 
 [node name="Spawner" type="Node2D" unique_id=3841475]
-script = ExtResource("1_2vbf6")
+script = ExtResource("1_c80uj")
+scene_to_spawn = ExtResource("2_jaypc")
+head_accessories = Array[ExtResource("2_hu2hm")]([ExtResource("3_jaypc"), ExtResource("5_6q3ki"), null, null])
+eyes_accessories = Array[ExtResource("6_yuh43")]([ExtResource("7_2fesh"), ExtResource("8_86hsf"), null, null])
+face_accessories = Array[ExtResource("9_uycrx")]([ExtResource("10_ulibx"), ExtResource("12_1veya"), null, null])
+neck_accessories = Array[ExtResource("13_3b78x")]([ExtResource("14_tj3iy"), ExtResource("15_2c4x0"), null, null])
+chest_accessories = Array[ExtResource("17_htgxi")]([ExtResource("18_pruht"), ExtResource("19_0xohq"), null, null])

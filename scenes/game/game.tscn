@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbram80xjim3b"]
 
-[ext_resource type="Script" uid="uid://m3pm4b4dlfw6" path="res://scenes/spawner/spawner.gd" id="1_2a8rs"]
+[ext_resource type="PackedScene" uid="uid://jheuvf6o6fpa" path="res://scenes/spawner/spawner.tscn" id="1_2a8rs"]
 [ext_resource type="PackedScene" uid="uid://crtb6rmnexlj2" path="res://scenes/stickman/stickman.tscn" id="2_4j704"]
 [ext_resource type="Resource" uid="uid://bmavh3hg5tvju" path="res://scenes/accessories/eyes_accessories/round_glasses.tres" id="3_kp23o"]
 [ext_resource type="Resource" uid="uid://kpd6srpgmfkt" path="res://scenes/accessories/chest_accessories/heart_pin.tres" id="4_5jirj"]
@@ -22,11 +22,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Spawner" type="Node2D" parent="." unique_id=220050764]
-script = ExtResource("1_2a8rs")
-scene_to_spawn = ExtResource("2_4j704")
-metadata/_custom_type_script = "uid://m3pm4b4dlfw6"
+[node name="Spawner" parent="." unique_id=3841475 instance=ExtResource("1_2a8rs")]
 
 [node name="Stickman" parent="." unique_id=987114327 instance=ExtResource("2_4j704")]
 visible = false
