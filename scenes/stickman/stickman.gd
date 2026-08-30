@@ -70,8 +70,10 @@ var ai_direction: Vector2 = Vector2.ZERO
 var ai_speed_modifier: float = 1.0
 
 func _ready() -> void:
+	add_to_group("stickman")
 	motion_mode = MOTION_MODE_FLOATING
 	input_pickable = true
+	collision_mask = 0
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 
@@ -125,10 +127,17 @@ func _process_ai(delta: float) -> void:
 		var next_pos = global_position + velocity * delta
 		
 		var bounced = false
-		if next_pos.x < ai_screen_margin or next_pos.x > screen_size.x - ai_screen_margin:
+		if next_pos.x < ai_screen_margin and ai_direction.x < 0:
 			ai_direction.x *= -1.0
 			bounced = true
-		if next_pos.y < ai_screen_margin or next_pos.y > screen_size.y - ai_screen_margin:
+		elif next_pos.x > screen_size.x - ai_screen_margin and ai_direction.x > 0:
+			ai_direction.x *= -1.0
+			bounced = true
+			
+		if next_pos.y < ai_screen_margin and ai_direction.y < 0:
+			ai_direction.y *= -1.0
+			bounced = true
+		elif next_pos.y > screen_size.y - ai_screen_margin and ai_direction.y > 0:
 			ai_direction.y *= -1.0
 			bounced = true
 			

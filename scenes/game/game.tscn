@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://bakikrj8gi8jg" path="res://scenes/accessories/face_accessories/goatee.tres" id="8_3xj4h"]
 [ext_resource type="Resource" uid="uid://dpjp131rn5wgk" path="res://scenes/accessories/chest_accessories/star_badge.tres" id="9_5v6r0"]
 
-[node name="Game" type="Node2D" unique_id=1704946345]
+[node name="Game" type="Node2D" unique_id=1704479097]
 y_sort_enabled = true
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="." unique_id=1447895418]
@@ -25,6 +25,8 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Spawner" parent="." unique_id=3841475 instance=ExtResource("1_2a8rs")]
+spawn_count = 10
+spawn_margin = 200.0
 
 [node name="Stickman" parent="." unique_id=987114327 instance=ExtResource("2_4j704")]
 visible = false
