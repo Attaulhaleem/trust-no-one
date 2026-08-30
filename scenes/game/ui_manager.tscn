@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://b7ciplmv36mur"]
+
+[ext_resource type="Texture2D" uid="uid://d3fsjbxi7jiyh" path="res://assets/accessories/head_accessories/top_hat.svg" id="1_dhmh2"]
+[ext_resource type="Texture2D" uid="uid://cmj3h2autnvtt" path="res://assets/accessories/eyes_accessories/sunglasses.svg" id="2_cfqto"]
+[ext_resource type="Texture2D" uid="uid://bq63xn0nvvi02" path="res://assets/accessories/face_accessories/goatee.svg" id="3_gh5nh"]
+[ext_resource type="Texture2D" uid="uid://6204q0nm6ppo" path="res://assets/accessories/neck_accessories/bow_tie.svg" id="4_26ghq"]
+[ext_resource type="Texture2D" uid="uid://cpls3fayorory" path="res://assets/accessories/chest_accessories/heart_pin.svg" id="5_f215b"]
+
+[node name="UIManager" type="CanvasLayer" unique_id=2116754329]
+layer = 100
+
+[node name="HudHBoxContainer" type="HBoxContainer" parent="." unique_id=1930789201]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="TargetsLabel" type="Label" parent="HudHBoxContainer" unique_id=1122655897]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Targets: 0 / 3"
+
+[node name="TimeLabel" type="Label" parent="HudHBoxContainer" unique_id=1037338327]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "01:00"
+
+[node name="CasualtiesLabel" type="Label" parent="HudHBoxContainer" unique_id=1227240123]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Casualties: 0 / 3"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=391308954]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=485458719]
+layout_mode = 2
+
+[node name="HeadHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=87294211]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=815819925]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Headwear"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HeadHBoxContainer" unique_id=1581728437]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("1_dhmh2")
+expand_mode = 2
+
+[node name="EyesHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=650397552]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=2071337455]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Eyewear"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/EyesHBoxContainer" unique_id=1465722565]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("2_cfqto")
+expand_mode = 2
+
+[node name="FaceHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1421800690]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=394856914]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Facial Hair"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/FaceHBoxContainer" unique_id=622765740]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("3_gh5nh")
+expand_mode = 2
+
+[node name="NeckHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1707126826]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=889720885]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Neckwear"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/NeckHBoxContainer" unique_id=1336455415]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("4_26ghq")
+expand_mode = 2
+
+[node name="ChestHBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1568078301]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=699974222]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Brooches"
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/ChestHBoxContainer" unique_id=27654054]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("5_f215b")
+expand_mode = 2
