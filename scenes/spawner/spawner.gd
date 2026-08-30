@@ -60,8 +60,11 @@ func _set_random_sprite_color(sprite: Sprite2D) -> Color:
 	return color
 
 
-func _generate_unique_look(require_all_slots: bool = false) -> Dictionary:
+func _generate_unique_look(is_target: bool = false) -> Dictionary:
 	var look = {}
+	var available_count = int(head_accessories.size() > 0) + int(eyes_accessories.size() > 0) \
+		+ int(face_accessories.size() > 0) + int(neck_accessories.size() > 0) \
+		+ int(chest_accessories.size() > 0)
 	var max_attempts = 50
 	for attempt in range(max_attempts):
 		look = {
@@ -71,8 +74,16 @@ func _generate_unique_look(require_all_slots: bool = false) -> Dictionary:
 			"neck": randi() % neck_accessories.size() if neck_accessories else -1,
 			"chest": randi() % chest_accessories.size() if chest_accessories else -1,
 		}
+		# Count how many slots actually got an accessory
+		var filled = 0
+		for v in look.values():
+			if v != -1:
+				filled += 1
 		# Targets must have an accessory in every available slot
-		if require_all_slots and -1 in look.values():
+		if is_target and filled < available_count:
+			continue
+		# Targets must have at least 1 accessory to be identifiable
+		if is_target and filled == 0:
 			continue
 		var look_str = str(look.head) + "_" + str(look.eyes) + "_" + str(look.face) + "_" + str(look.neck) + "_" + str(look.chest)
 		if not generated_looks.has(look_str):
