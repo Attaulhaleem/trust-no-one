@@ -24,6 +24,8 @@ signal start_game
 @export var face_tex: TextureRect
 @export var neck_tex: TextureRect
 @export var chest_tex: TextureRect
+@export var unavailable_icon: Texture2D
+
 
 const GAME_OVER_TITLE := {
 	"won": &"You Won!",
@@ -49,8 +51,6 @@ func _get_cropped_texture(texture: Texture2D) -> Texture2D:
 		atlas.region = used_rect
 		return atlas
 	return texture
-
-@export var unavailable_icon: Texture2D
 
 func update_witness_statement(target: Stickman):
 	if target.head_accessory:
@@ -89,8 +89,8 @@ func update_witness_statement(target: Stickman):
 		chest_tex.modulate = Color.WHITE
 
 
-func update_targets(killed: int, total: int):
-	targets_label.text = "Targets %d/%d" % [killed, total]
+func update_targets(killed: int, total: int, wave: int = 1):
+	targets_label.text = "Wave %d | Targets %d/%d" % [wave, killed, total]
 
 
 func update_time(time_left: float):
@@ -115,7 +115,7 @@ func _ready():
 	start_button.pressed.connect(_on_start_pressed)
 	start_quit_button.pressed.connect(func(): get_tree().quit())
 	
-	replay_button.pressed.connect(func(): 
+	replay_button.pressed.connect(func():
 		Engine.set_meta("skip_start", true)
 		get_tree().reload_current_scene()
 	)
@@ -129,10 +129,10 @@ func _on_start_pressed():
 	start_game.emit()
 
 
-func show_game_over(reason: String):
+func show_game_over(reason: String, wave: int = 1):
 	Input.set_custom_mouse_cursor(null)
 	hud.hide()
 	description_panel.hide()
 	game_over_title_label.text = GAME_OVER_TITLE[reason]
-	game_over_subtitle_label.text = GAME_OVER_SUBTITLE[reason]
+	game_over_subtitle_label.text = GAME_OVER_SUBTITLE.get(reason, "") + "\n\nYou survived " + str(wave - 1) + " waves."
 	game_over_menu.show()

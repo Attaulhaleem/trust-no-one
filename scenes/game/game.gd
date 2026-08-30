@@ -22,6 +22,7 @@ var bgm_player: AudioStreamPlayer
 var total_targets = 0
 var killed_targets = 0
 var casualties = 0
+var current_wave = 1
 var game_over: bool = false
 
 func _ready():
@@ -63,20 +64,23 @@ func _unhandled_input(event: InputEvent) -> void:
 func _initialize_game():
 	var stickmen = get_tree().get_nodes_in_group("stickman")
 	
-	var target = null
 	for s in stickmen:
 		if s is Stickman:
 			s.died.connect(_on_stickman_died)
 			if s.is_special:
 				total_targets += 1
-				target = s
-			
-	if target:
-		ui_manager.update_witness_statement(target)
-		
-	ui_manager.update_targets(killed_targets, total_targets)
+	
+	_update_target_ui()
+	ui_manager.update_targets(killed_targets, total_targets, current_wave)
 	ui_manager.update_casualties(casualties, max_casualties)
 	ui_manager.update_time(time_left)
+
+func _update_target_ui():
+	var stickmen = get_tree().get_nodes_in_group("stickman")
+	for s in stickmen:
+		if s is Stickman and s.is_special and not s.is_dead:
+			ui_manager.update_witness_statement(s)
+			return
 
 func _process(delta: float):
 	if game_over:
@@ -97,9 +101,11 @@ func _on_stickman_died(stickman: Stickman):
 		_play_sfx(sfx_elimination)
 		_spawn_floating_text("NEUTRALIZED", stickman.global_position, Color.YELLOW)
 		killed_targets += 1
-		ui_manager.update_targets(killed_targets, total_targets)
+		ui_manager.update_targets(killed_targets, total_targets, current_wave)
 		if killed_targets >= total_targets:
-			_trigger_win()
+			_start_next_wave()
+		else:
+			_update_target_ui()
 	else:
 		_play_sfx(sfx_casualty)
 		_spawn_floating_text("CIVILIAN", stickman.global_position, Color.RED)
@@ -118,19 +124,36 @@ func _trigger_game_over(reason: String):
 			s.freeze()
 			if not s.is_special and not s.is_dead:
 				s.mass_die()
-	ui_manager.show_game_over(reason)
+	ui_manager.show_game_over(reason, current_wave)
 
-func _trigger_win():
-	game_over = true
+func _start_next_wave():
 	_play_sfx(sfx_game_won)
-	_play_bgm(bgm_menu)
+	
 	var stickmen = get_tree().get_nodes_in_group("stickman")
 	for s in stickmen:
 		if s is Stickman:
 			s.freeze()
-			if not s.is_dead:
-				s.play_dance()
-	ui_manager.show_game_over("won")
+			
+	await get_tree().create_timer(1.5).timeout
+	if game_over:
+		return
+		
+	current_wave += 1
+	var time_bonus = max(8.0, 20.0 - current_wave)
+	time_left += time_bonus
+	spawner.spawn_count += 2
+	spawner.special_count = 1 + (current_wave / 8)
+	
+	for s in stickmen:
+		if is_instance_valid(s):
+			s.queue_free()
+			
+	await get_tree().process_frame
+	
+	total_targets = 0
+	killed_targets = 0
+	spawner.spawn_wave()
+	_initialize_game()
 
 func _spawn_floating_text(text: String, pos: Vector2, color: Color):
 	var node = Node2D.new()
