@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/SpecialElite-Regular.ttf" id="1_3f3va"]
+
+[resource]
+default_font = ExtResource("1_3f3va")

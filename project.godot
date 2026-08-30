@@ -25,6 +25,10 @@ window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://cw3opolurq2bg"
 mouse_cursor/custom_image_hotspot=Vector2(50, 50)
 
+[gui]
+
+theme/custom="res://assets/themes/main_theme.tres"
+
 [input]
 
 move_left={
