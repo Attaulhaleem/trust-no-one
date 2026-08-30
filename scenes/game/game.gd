@@ -9,6 +9,10 @@ var sfx_game_lost = preload("res://assets/sfx/game_lost.wav")
 var sfx_game_won = preload("res://assets/sfx/game_won.wav")
 var sfx_shoot_miss = preload("res://assets/sfx/shoot_miss.wav")
 
+var bgm_menu = preload("res://assets/sfx/menu_theme.wav")
+var bgm_gameplay = preload("res://assets/sfx/gameplay_loop.wav")
+var bgm_player: AudioStreamPlayer
+
 var total_targets = 0
 var killed_targets = 0
 var casualties = 0
@@ -17,13 +21,25 @@ var time_left: float = 60.0
 var game_over: bool = false
 
 func _ready():
+	bgm_player = AudioStreamPlayer.new()
+	bgm_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(bgm_player)
+	_play_bgm(bgm_menu)
+	
 	get_tree().paused = true
 	ui_manager.start_game.connect(_on_start_game)
 	# Wait for spawner to finish spawning in its _ready
 	call_deferred("_initialize_game")
 
+func _play_bgm(stream: AudioStream):
+	if bgm_player.stream == stream and bgm_player.playing:
+		return
+	bgm_player.stream = stream
+	bgm_player.play()
+
 func _on_start_game():
 	get_tree().paused = false
+	_play_bgm(bgm_gameplay)
 
 func _play_sfx(stream: AudioStream):
 	var player = AudioStreamPlayer.new()
@@ -90,6 +106,7 @@ func _on_stickman_died(stickman: Stickman):
 func _trigger_game_over(reason: String):
 	game_over = true
 	_play_sfx(sfx_game_lost)
+	_play_bgm(bgm_menu)
 	var stickmen = get_tree().get_nodes_in_group("stickman")
 	for s in stickmen:
 		if s is Stickman:
@@ -101,6 +118,7 @@ func _trigger_game_over(reason: String):
 func _trigger_win():
 	game_over = true
 	_play_sfx(sfx_game_won)
+	_play_bgm(bgm_menu)
 	var stickmen = get_tree().get_nodes_in_group("stickman")
 	for s in stickmen:
 		if s is Stickman:

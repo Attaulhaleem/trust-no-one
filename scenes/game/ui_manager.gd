@@ -38,33 +38,45 @@ const GAME_OVER_SUBTITLE := {
 }
 
 
+func _get_cropped_texture(texture: Texture2D) -> Texture2D:
+	if not texture: return null
+	var image = texture.get_image()
+	if not image: return texture
+	var used_rect = image.get_used_rect()
+	if used_rect.has_area():
+		var atlas = AtlasTexture.new()
+		atlas.atlas = texture
+		atlas.region = used_rect
+		return atlas
+	return texture
+
 func update_witness_statement(target: Stickman):
 	if target.head_accessory:
-		head_tex.texture = target.head_accessory.texture
+		head_tex.texture = _get_cropped_texture(target.head_accessory.texture)
 		head_tex.modulate = target.head_accessory_sprite.modulate
 	else:
 		head_tex.texture = null
 		
 	if target.eyes_accessory:
-		eyes_tex.texture = target.eyes_accessory.texture
+		eyes_tex.texture = _get_cropped_texture(target.eyes_accessory.texture)
 		eyes_tex.modulate = target.eyes_accessory_sprite.modulate
 	else:
 		eyes_tex.texture = null
 		
 	if target.face_accessory:
-		face_tex.texture = target.face_accessory.texture
+		face_tex.texture = _get_cropped_texture(target.face_accessory.texture)
 		face_tex.modulate = target.face_accessory_sprite.modulate
 	else:
 		face_tex.texture = null
 		
 	if target.neck_accessory:
-		neck_tex.texture = target.neck_accessory.texture
+		neck_tex.texture = _get_cropped_texture(target.neck_accessory.texture)
 		neck_tex.modulate = target.neck_accessory_sprite.modulate
 	else:
 		neck_tex.texture = null
 		
 	if target.chest_accessory:
-		chest_tex.texture = target.chest_accessory.texture
+		chest_tex.texture = _get_cropped_texture(target.chest_accessory.texture)
 		chest_tex.modulate = target.chest_accessory_sprite.modulate
 	else:
 		chest_tex.texture = null

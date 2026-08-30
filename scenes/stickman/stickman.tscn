@@ -312,16 +312,21 @@ frame_progress = 1.0
 shape = SubResource("CapsuleShape2D_sej1l")
 
 [node name="HeadAccessorySprite2D" type="Sprite2D" parent="." unique_id=1259095385]
+scale = Vector2(0.25, 0.25)
 modulate = Color(0, 0, 0, 1)
 
 [node name="EyesAccessorySprite2D" type="Sprite2D" parent="." unique_id=465287191]
+scale = Vector2(0.25, 0.25)
 modulate = Color(0, 0, 0, 1)
 
 [node name="FaceAccessorySprite2D" type="Sprite2D" parent="." unique_id=1764639747]
+scale = Vector2(0.25, 0.25)
 modulate = Color(0, 0, 0, 1)
 
 [node name="NeckAccessorySprite2D" type="Sprite2D" parent="." unique_id=1106235137]
+scale = Vector2(0.25, 0.25)
 modulate = Color(0, 0, 0, 1)
 
 [node name="ChestAccessorySprite2D" type="Sprite2D" parent="." unique_id=1763765795]
+scale = Vector2(0.25, 0.25)
 modulate = Color(0, 0, 0, 1)

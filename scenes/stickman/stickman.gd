@@ -206,7 +206,7 @@ func _die() -> void:
 	# Create blood particles and add them to the parent so they aren't destroyed when stickman is freed
 	var blood := CPUParticles2D.new()
 	blood.emitting = false
-	blood.amount = 30
+	blood.amount = 40
 	blood.one_shot = true
 	blood.explosiveness = 0.95
 	blood.lifetime = 0.8
