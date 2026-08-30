@@ -1,23 +1,27 @@
 extends Node2D
 
+@export_category("Nodes")
 @export var ui_manager: UIManager
 @export var spawner: Spawner
 
-var sfx_casualty = preload("res://assets/sfx/casualty.wav")
-var sfx_elimination = preload("res://assets/sfx/elimination.wav")
-var sfx_game_lost = preload("res://assets/sfx/game_lost.wav")
-var sfx_game_won = preload("res://assets/sfx/game_won.wav")
-var sfx_shoot_miss = preload("res://assets/sfx/shoot_miss.wav")
+@export_category("Resources")
+@export var sfx_casualty = preload("res://assets/sfx/casualty.wav")
+@export var sfx_elimination = preload("res://assets/sfx/elimination.wav")
+@export var sfx_game_lost = preload("res://assets/sfx/game_lost.wav")
+@export var sfx_game_won = preload("res://assets/sfx/game_won.wav")
+@export var sfx_shoot_miss = preload("res://assets/sfx/shoot_miss.wav")
+@export var bgm_menu = preload("res://assets/sfx/menu_theme.wav")
+@export var bgm_gameplay = preload("res://assets/sfx/gameplay_loop.wav")
 
-var bgm_menu = preload("res://assets/sfx/menu_theme.wav")
-var bgm_gameplay = preload("res://assets/sfx/gameplay_loop.wav")
+@export_category("Settings")
+@export var time_left: float = 60.0
+@export var max_casualties = 3
+
 var bgm_player: AudioStreamPlayer
 
 var total_targets = 0
 var killed_targets = 0
 var casualties = 0
-var max_casualties = 3
-var time_left: float = 60.0
 var game_over: bool = false
 
 func _ready():
